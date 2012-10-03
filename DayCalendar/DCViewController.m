@@ -14,6 +14,7 @@
 #import "API.h"
 #import "DCMoonPhase.h"
 #import "DCMoon.h"
+#import "TODOMacros.h"
 
 //OFFSETS & FONTS
 
@@ -340,7 +341,7 @@
     NSDate *nextDate = [gregorianCalendar dateFromComponents:nextComponents];
     NSString *nextPhaseText = [NSString stringWithFormat:NSLocalizedString(@"%@ will in %@", nil),nextMoonPhase.name, [formatter stringFromDate:nextDate]];
     CGPoint nextPoint = moonPhaseLabel.frame.origin;
-    nextPoint.y += moonPhaseLabel.frame.size.height + 4;
+    nextPoint.y += moonPhaseLabel.frame.size.height + MAGIC_NUMBER(4);
     nextMoonPhaseLabel = [DCDayInfo astroLabelWithText:nextPhaseText
                                                        withFont:ASTROSUN_FONT_SIGN
                                                   withTextColor:[UIColor darkGrayColor]

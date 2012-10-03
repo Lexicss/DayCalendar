@@ -65,6 +65,7 @@
 		7C5B1FDA1614939A009C9894 /* iPhoneIcon_Big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPhoneIcon_Big.png; path = ../iPhoneIcon_Big.png; sourceTree = "<group>"; };
 		7C5B1FDC161493D0009C9894 /* iPhoneIcon_Medium.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPhoneIcon_Medium.png; path = ../iPhoneIcon_Medium.png; sourceTree = "<group>"; };
 		7C5B1FDE16149458009C9894 /* iPhoneIcon_Big (2).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPhoneIcon_Big (2).png"; path = "../iPhoneIcon_Big (2).png"; sourceTree = "<group>"; };
+		7C65F412161C2B010038EB79 /* TODOMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TODOMacros.h; sourceTree = "<group>"; };
 		7C6C32F115DA2AFC00B9F17E /* DCParseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCParseDelegate.h; sourceTree = "<group>"; };
 		7C6C32F215DA2AFC00B9F17E /* DCParseDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCParseDelegate.m; sourceTree = "<group>"; };
 		7CF7823F15DBEB9C00134992 /* oldpaper.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = oldpaper.jpeg; sourceTree = "<group>"; };
@@ -165,6 +166,7 @@
 				7C579C7615F8DF8200B2DE3B /* DCMoon.m */,
 				848777951583906E00D25477 /* DCGeoPoint.h */,
 				848777961583906E00D25477 /* DCGeoPoint.m */,
+				7C65F412161C2B010038EB79 /* TODOMacros.h */,
 				7C4F43E015E4B273001ACABF /* Astronomic Objects */,
 				84D707011588F9B700C541C6 /* Resources */,
 				84C68A6D157B4C5F00A94424 /* Supporting Files */,
