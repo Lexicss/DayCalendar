@@ -26,9 +26,9 @@
  * at compile time AND display an alert at runtime if the user trigger the IBAction
  */
 #define NOT_IMPLEMENTED(warningMessage) \
-[[[[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%s",__PRETTY_FUNCTION__] \
+[[[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%s",__PRETTY_FUNCTION__] \
 message:[NSString stringWithFormat:@"%s",warningMessage] \
-delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease] show]; \
+delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil]  show]; \
 TODO("Implement this - " warningMessage)
 
 
