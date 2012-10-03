@@ -32,8 +32,7 @@ CGPoint lastCenter;
     lastCenter = CGPointMake(mainRect.size.width / 2, Y_OFFSET + oldPaperImage.size.height / 2);
 }
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code

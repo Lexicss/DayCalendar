@@ -9,17 +9,9 @@
 #import "DCMoonPhase.h"
 #import "DCDayInfo.h"
 
+#define MAX_ITERATIONS 10
+
 // Moon phase`s names
-/*
-#define NEW_PHASE 1.84556
-#define WAXINGCRESCENT_PHASE 5.53699
-#define FIRSTQUATER_PHASE 9.2283
-#define WAXINGFGIBBOUS_PHASE 12.91963
-#define FULL_PHASE 16.61096
-#define WANINGGIBBOUS_PHASE 20.30228
-#define LASTQUATER_PHASE 23.99361
-#define WANINGCRESCENT_PHASE 27.68493
-*/
 #define NEW_PHASE 0.959642
 #define WAXINGCRESCENT_PHASE 6.422908
 #define FIRSTQUATER_PHASE 8.342382
@@ -72,7 +64,6 @@
 
 + (NSDateComponents*)componentsForNextPhaseOf:(DCMoonPhase*)moonPhase fromComponents:(NSDateComponents*)fromComponents {
     DCMoonPhase *nextMoonPhase;
-    //NSDateComponents *nextComponents = [fromComponents copy];
     NSInteger iterations = 0;
     NSDateComponents *nextComponents = [[NSDateComponents alloc] init];
     [nextComponents setYear:fromComponents.year];
@@ -85,7 +76,7 @@
     do {
         NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
         NSDate *nextDate = [gregorianCalendar dateFromComponents:nextComponents];
-        nextDate = [nextDate dateByAddingTimeInterval:86400 * 1];
+        nextDate = [nextDate dateByAddingTimeInterval:SECONDS_IN_DAY];
 
         nextComponents = [gregorianCalendar components:(NSYearCalendarUnit |
                                                         NSMonthCalendarUnit |
@@ -97,7 +88,7 @@
         CGFloat nextPeriod = [DCDayInfo calculateMoonPhaseForComponents:nextComponents];
         nextMoonPhase = [[DCMoonPhase alloc] initWithPeriod:nextPeriod];
         iterations++;
-    } while (nextMoonPhase.index == [moonPhase index] && iterations <= 10);
+    } while (nextMoonPhase.index == [moonPhase index] && iterations <= MAX_ITERATIONS);
     
     return nextComponents;
 }

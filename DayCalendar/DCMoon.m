@@ -208,7 +208,7 @@ static long double Set_az = 0.0;
     [subArray setObject:doubleNumber atIndexedSubscript:j];
 }
 
-+ (RiseSetTimes) calculateMoonWithGeoPoint:(DCGeoPoint *)geoPoint{
++ (RiseSetTimes) calculateMoonWithGeoPoint:(DCGeoPoint *)geoPoint {
     double zone = -[geoPoint.timeZone secondsFromGMT] / SECONDS_IN_HOUR;//-3.0;
     double jdlp = [DCDayInfo julianDayFromComponents:[geoPoint dateTime]];//[DCDayInfo jFromG:components];
     double jd = jdlp - 2451545;

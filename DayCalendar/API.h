@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #define SECONDS_IN_HOUR 3600
+#define SECONDS_IN_DAY 86400
 
 struct RiseSetTimes {
     CGFloat rise;

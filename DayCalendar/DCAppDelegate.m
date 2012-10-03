@@ -46,8 +46,7 @@
 
 #pragma mark - App Lifecycle
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.viewController = [[DCViewController alloc] initWithNibName:nil bundle:nil];
     self.window.rootViewController = self.viewController;
@@ -62,14 +61,12 @@
     return YES;
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application
-{
+- (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
+- (void)applicationDidEnterBackground:(UIApplication *)application {
     [self.viewController refreshCalendarData];
 }
 
