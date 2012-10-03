@@ -1,0 +1,60 @@
+/* Localized versions of Info.plist keys */
+"Monday" = "Monday";
+"Tuesday" = "Tuesday";
+"Wednesday" = "Wednesday";
+"Thursday" = "Thursday";
+"Friday" = "Friday";
+"Saturday" = "Saturday";
+"Sunday" = "Sunday";
+
+"January" = "January";
+"February" = "February";
+"March" = "March";
+"April" = "April";
+"May" = "May";
+"June" = "June";
+"July" = "July";
+"August" = "August";
+"September" = "September";
+"October" = "October";
+"November" = "November";
+"December" = "December";
+
+"Rise:" = "Rise:";
+"Set:" = "Set:";
+"Duration:" = "Duration:";
+
+"Error to connect to wikipedia" = "Error to connect to wikipedia";
+"wikipedia server" = "http://en.wikipedia.org/wiki/%@";
+
+"Events" = "Events";
+"Births" = "Births";
+"Deaths" = "Deaths";
+
+"Aries" = "Aries";
+"Taurus" = "Taurus";
+"Gemini" = "Gemini";
+"Cancer" = "Cancer";
+"Leo" = "Leo";
+"Virgo" = "Virgo";
+"Libra" = "Libra";
+"Scorpio" = "Scorpio";
+"Sagittarius" = "Sagittarius";
+"Capricorn" = "Capricorn";
+"Aquarius" = "Aquarius";
+"Pisces" = "Pisces";
+"Ophiuchus" = "Ophiuchus";
+"(but sun in %@)" = "(but sun in %@)";
+
+"New Moon" = " New Moon ";
+"Waxing Crescent" = "Waxing Crescent";
+"First Quater" = "First Quater";
+"Waxing Gibbous" = "Waxing Gibbous";
+"Full Moon" = " Full Moon ";
+"Waning Gibbous" = "Waning Gibbous";
+"Last Quater" = "Last Quater";
+"Waning Crescent" = "Waning Crescent";
+"%@ will in %@" = "%@ will in %@";
+
+"Parser error:" = "Parser error:";
+"Edit" = "Edit";

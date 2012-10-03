@@ -1,0 +1,422 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7C1DF76515DCEE7C0055AF65 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C1DF76415DCEE7C0055AF65 /* CoreLocation.framework */; };
+		7C3B8BC115E2811900EE6719 /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B8BC015E2811900EE6719 /* API.m */; };
+		7C406CAF15E670E7000AAEDF /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7C406CAE15E670E7000AAEDF /* Settings.bundle */; };
+		7C4AAFA815DE2955001EE20D /* horizontal-line.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C4AAFA715DE2955001EE20D /* horizontal-line.png */; };
+		7C4F43D815E4B0E9001ACABF /* amoon_phase_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C4F43D015E4B0E9001ACABF /* amoon_phase_0.png */; };
+		7C4F43D915E4B0E9001ACABF /* amoon_phase_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C4F43D115E4B0E9001ACABF /* amoon_phase_1.png */; };
+		7C4F43DA15E4B0E9001ACABF /* amoon_phase_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C4F43D215E4B0E9001ACABF /* amoon_phase_2.png */; };
+		7C4F43DB15E4B0E9001ACABF /* amoon_phase_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C4F43D315E4B0E9001ACABF /* amoon_phase_3.png */; };
+		7C4F43DC15E4B0E9001ACABF /* amoon_phase_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C4F43D415E4B0E9001ACABF /* amoon_phase_4.png */; };
+		7C4F43DD15E4B0E9001ACABF /* amoon_phase_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C4F43D515E4B0E9001ACABF /* amoon_phase_5.png */; };
+		7C4F43DE15E4B0E9001ACABF /* amoon_phase_6.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C4F43D615E4B0E9001ACABF /* amoon_phase_6.png */; };
+		7C4F43DF15E4B0E9001ACABF /* amoon_phase_7.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C4F43D715E4B0E9001ACABF /* amoon_phase_7.png */; };
+		7C4F43E315E4B2F3001ACABF /* DCMoonPhase.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C4F43E215E4B2F3001ACABF /* DCMoonPhase.m */; };
+		7C579C7715F8DF8200B2DE3B /* DCMoon.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C579C7615F8DF8200B2DE3B /* DCMoon.m */; };
+		7C5B1FD816149341009C9894 /* iPhoneIcon_Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C5B1FD716149341009C9894 /* iPhoneIcon_Small.png */; };
+		7C5B1FDB1614939A009C9894 /* iPhoneIcon_Big.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C5B1FDA1614939A009C9894 /* iPhoneIcon_Big.png */; };
+		7C5B1FDD161493D0009C9894 /* iPhoneIcon_Medium.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C5B1FDC161493D0009C9894 /* iPhoneIcon_Medium.png */; };
+		7C5B1FDF16149458009C9894 /* iPhoneIcon_Big (2).png in Resources */ = {isa = PBXBuildFile; fileRef = 7C5B1FDE16149458009C9894 /* iPhoneIcon_Big (2).png */; };
+		7C6C32F315DA2AFC00B9F17E /* DCParseDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6C32F215DA2AFC00B9F17E /* DCParseDelegate.m */; };
+		7CF7824015DBEB9C00134992 /* oldpaper.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7CF7823F15DBEB9C00134992 /* oldpaper.jpeg */; };
+		7CF7824315DBEC7300134992 /* DCPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF7824215DBEC7300134992 /* DCPopView.m */; };
+		840C2D9A15DF708C00B78DF0 /* DayCalendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 840C2D9915DF708C00B78DF0 /* DayCalendar.png */; };
+		844BA28815DF758800A38E14 /* DCZodiac.m in Sources */ = {isa = PBXBuildFile; fileRef = 844BA28715DF758800A38E14 /* DCZodiac.m */; };
+		8487778F1583888F00D25477 /* DCDayInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8487778E1583888F00D25477 /* DCDayInfo.m */; };
+		848777971583906E00D25477 /* DCGeoPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 848777961583906E00D25477 /* DCGeoPoint.m */; };
+		84C68A67157B4C5F00A94424 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C68A66157B4C5F00A94424 /* UIKit.framework */; };
+		84C68A69157B4C5F00A94424 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C68A68157B4C5F00A94424 /* Foundation.framework */; };
+		84C68A6B157B4C5F00A94424 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C68A6A157B4C5F00A94424 /* CoreGraphics.framework */; };
+		84C68A71157B4C5F00A94424 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84C68A6F157B4C5F00A94424 /* Localizable.strings */; };
+		84C68A73157B4C5F00A94424 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C68A72157B4C5F00A94424 /* main.m */; };
+		84C68A77157B4C5F00A94424 /* DCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C68A76157B4C5F00A94424 /* DCAppDelegate.m */; };
+		84C68A7A157B4C5F00A94424 /* DCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C68A79157B4C5F00A94424 /* DCViewController.m */; };
+		84D707041588F9DB00C541C6 /* theSun.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D707031588F9DB00C541C6 /* theSun.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7C1DF76415DCEE7C0055AF65 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		7C1DF77515DD18E20055AF65 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7C3B8BBF15E2811900EE6719 /* API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
+		7C3B8BC015E2811900EE6719 /* API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = API.m; sourceTree = "<group>"; };
+		7C406CAE15E670E7000AAEDF /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		7C4AAFA715DE2955001EE20D /* horizontal-line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "horizontal-line.png"; sourceTree = "<group>"; };
+		7C4F43D015E4B0E9001ACABF /* amoon_phase_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amoon_phase_0.png; sourceTree = "<group>"; };
+		7C4F43D115E4B0E9001ACABF /* amoon_phase_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amoon_phase_1.png; sourceTree = "<group>"; };
+		7C4F43D215E4B0E9001ACABF /* amoon_phase_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amoon_phase_2.png; sourceTree = "<group>"; };
+		7C4F43D315E4B0E9001ACABF /* amoon_phase_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amoon_phase_3.png; sourceTree = "<group>"; };
+		7C4F43D415E4B0E9001ACABF /* amoon_phase_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amoon_phase_4.png; sourceTree = "<group>"; };
+		7C4F43D515E4B0E9001ACABF /* amoon_phase_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amoon_phase_5.png; sourceTree = "<group>"; };
+		7C4F43D615E4B0E9001ACABF /* amoon_phase_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amoon_phase_6.png; sourceTree = "<group>"; };
+		7C4F43D715E4B0E9001ACABF /* amoon_phase_7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amoon_phase_7.png; sourceTree = "<group>"; };
+		7C4F43E115E4B2F3001ACABF /* DCMoonPhase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMoonPhase.h; sourceTree = "<group>"; };
+		7C4F43E215E4B2F3001ACABF /* DCMoonPhase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMoonPhase.m; sourceTree = "<group>"; };
+		7C579C7515F8DF8200B2DE3B /* DCMoon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMoon.h; sourceTree = "<group>"; };
+		7C579C7615F8DF8200B2DE3B /* DCMoon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMoon.m; sourceTree = "<group>"; };
+		7C5B1FD716149341009C9894 /* iPhoneIcon_Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPhoneIcon_Small.png; path = ../iPhoneIcon_Small.png; sourceTree = "<group>"; };
+		7C5B1FDA1614939A009C9894 /* iPhoneIcon_Big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPhoneIcon_Big.png; path = ../iPhoneIcon_Big.png; sourceTree = "<group>"; };
+		7C5B1FDC161493D0009C9894 /* iPhoneIcon_Medium.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPhoneIcon_Medium.png; path = ../iPhoneIcon_Medium.png; sourceTree = "<group>"; };
+		7C5B1FDE16149458009C9894 /* iPhoneIcon_Big (2).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPhoneIcon_Big (2).png"; path = "../iPhoneIcon_Big (2).png"; sourceTree = "<group>"; };
+		7C6C32F115DA2AFC00B9F17E /* DCParseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCParseDelegate.h; sourceTree = "<group>"; };
+		7C6C32F215DA2AFC00B9F17E /* DCParseDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCParseDelegate.m; sourceTree = "<group>"; };
+		7CF7823F15DBEB9C00134992 /* oldpaper.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = oldpaper.jpeg; sourceTree = "<group>"; };
+		7CF7824115DBEC7300134992 /* DCPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCPopView.h; sourceTree = "<group>"; };
+		7CF7824215DBEC7300134992 /* DCPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCPopView.m; sourceTree = "<group>"; };
+		840C2D9915DF708C00B78DF0 /* DayCalendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DayCalendar.png; sourceTree = "<group>"; };
+		844BA28615DF758800A38E14 /* DCZodiac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCZodiac.h; sourceTree = "<group>"; };
+		844BA28715DF758800A38E14 /* DCZodiac.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCZodiac.m; sourceTree = "<group>"; };
+		8487778D1583888F00D25477 /* DCDayInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCDayInfo.h; sourceTree = "<group>"; };
+		8487778E1583888F00D25477 /* DCDayInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCDayInfo.m; sourceTree = "<group>"; };
+		848777951583906E00D25477 /* DCGeoPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCGeoPoint.h; sourceTree = "<group>"; };
+		848777961583906E00D25477 /* DCGeoPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCGeoPoint.m; sourceTree = "<group>"; };
+		84C68A62157B4C5F00A94424 /* DayCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DayCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		84C68A66157B4C5F00A94424 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		84C68A68157B4C5F00A94424 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		84C68A6A157B4C5F00A94424 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		84C68A6E157B4C5F00A94424 /* DayCalendar-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DayCalendar-Info.plist"; sourceTree = "<group>"; };
+		84C68A70157B4C5F00A94424 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		84C68A72157B4C5F00A94424 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		84C68A74157B4C5F00A94424 /* DayCalendar-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DayCalendar-Prefix.pch"; sourceTree = "<group>"; };
+		84C68A75157B4C5F00A94424 /* DCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCAppDelegate.h; sourceTree = "<group>"; };
+		84C68A76157B4C5F00A94424 /* DCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCAppDelegate.m; sourceTree = "<group>"; };
+		84C68A78157B4C5F00A94424 /* DCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCViewController.h; sourceTree = "<group>"; };
+		84C68A79157B4C5F00A94424 /* DCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCViewController.m; sourceTree = "<group>"; };
+		84D707031588F9DB00C541C6 /* theSun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = theSun.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		84C68A5F157B4C5F00A94424 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C1DF76515DCEE7C0055AF65 /* CoreLocation.framework in Frameworks */,
+				84C68A67157B4C5F00A94424 /* UIKit.framework in Frameworks */,
+				84C68A69157B4C5F00A94424 /* Foundation.framework in Frameworks */,
+				84C68A6B157B4C5F00A94424 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7C4F43E015E4B273001ACABF /* Astronomic Objects */ = {
+			isa = PBXGroup;
+			children = (
+				844BA28615DF758800A38E14 /* DCZodiac.h */,
+				844BA28715DF758800A38E14 /* DCZodiac.m */,
+				7C4F43E115E4B2F3001ACABF /* DCMoonPhase.h */,
+				7C4F43E215E4B2F3001ACABF /* DCMoonPhase.m */,
+			);
+			name = "Astronomic Objects";
+			sourceTree = "<group>";
+		};
+		84C68A57157B4C5F00A94424 = {
+			isa = PBXGroup;
+			children = (
+				84C68A6C157B4C5F00A94424 /* DayCalendar */,
+				84C68A65157B4C5F00A94424 /* Frameworks */,
+				84C68A63157B4C5F00A94424 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		84C68A63157B4C5F00A94424 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				84C68A62157B4C5F00A94424 /* DayCalendar.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		84C68A65157B4C5F00A94424 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7C1DF76415DCEE7C0055AF65 /* CoreLocation.framework */,
+				84C68A66157B4C5F00A94424 /* UIKit.framework */,
+				84C68A68157B4C5F00A94424 /* Foundation.framework */,
+				84C68A6A157B4C5F00A94424 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		84C68A6C157B4C5F00A94424 /* DayCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				84C68A75157B4C5F00A94424 /* DCAppDelegate.h */,
+				84C68A76157B4C5F00A94424 /* DCAppDelegate.m */,
+				7C3B8BBF15E2811900EE6719 /* API.h */,
+				7C3B8BC015E2811900EE6719 /* API.m */,
+				84C68A78157B4C5F00A94424 /* DCViewController.h */,
+				84C68A79157B4C5F00A94424 /* DCViewController.m */,
+				7CF7824115DBEC7300134992 /* DCPopView.h */,
+				7CF7824215DBEC7300134992 /* DCPopView.m */,
+				7C6C32F115DA2AFC00B9F17E /* DCParseDelegate.h */,
+				7C6C32F215DA2AFC00B9F17E /* DCParseDelegate.m */,
+				8487778D1583888F00D25477 /* DCDayInfo.h */,
+				8487778E1583888F00D25477 /* DCDayInfo.m */,
+				7C579C7515F8DF8200B2DE3B /* DCMoon.h */,
+				7C579C7615F8DF8200B2DE3B /* DCMoon.m */,
+				848777951583906E00D25477 /* DCGeoPoint.h */,
+				848777961583906E00D25477 /* DCGeoPoint.m */,
+				7C4F43E015E4B273001ACABF /* Astronomic Objects */,
+				84D707011588F9B700C541C6 /* Resources */,
+				84C68A6D157B4C5F00A94424 /* Supporting Files */,
+			);
+			path = DayCalendar;
+			sourceTree = "<group>";
+		};
+		84C68A6D157B4C5F00A94424 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7C406CAE15E670E7000AAEDF /* Settings.bundle */,
+				84C68A6E157B4C5F00A94424 /* DayCalendar-Info.plist */,
+				84C68A6F157B4C5F00A94424 /* Localizable.strings */,
+				84C68A72157B4C5F00A94424 /* main.m */,
+				84C68A74157B4C5F00A94424 /* DayCalendar-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		84D707011588F9B700C541C6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7C5B1FDE16149458009C9894 /* iPhoneIcon_Big (2).png */,
+				7C5B1FDC161493D0009C9894 /* iPhoneIcon_Medium.png */,
+				7C5B1FDA1614939A009C9894 /* iPhoneIcon_Big.png */,
+				7C5B1FD716149341009C9894 /* iPhoneIcon_Small.png */,
+				7C4F43D015E4B0E9001ACABF /* amoon_phase_0.png */,
+				7C4F43D115E4B0E9001ACABF /* amoon_phase_1.png */,
+				7C4F43D215E4B0E9001ACABF /* amoon_phase_2.png */,
+				7C4F43D315E4B0E9001ACABF /* amoon_phase_3.png */,
+				7C4F43D415E4B0E9001ACABF /* amoon_phase_4.png */,
+				7C4F43D515E4B0E9001ACABF /* amoon_phase_5.png */,
+				7C4F43D615E4B0E9001ACABF /* amoon_phase_6.png */,
+				7C4F43D715E4B0E9001ACABF /* amoon_phase_7.png */,
+				840C2D9915DF708C00B78DF0 /* DayCalendar.png */,
+				7C4AAFA715DE2955001EE20D /* horizontal-line.png */,
+				7CF7823F15DBEB9C00134992 /* oldpaper.jpeg */,
+				84D707031588F9DB00C541C6 /* theSun.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		84C68A61157B4C5F00A94424 /* DayCalendar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84C68A83157B4C5F00A94424 /* Build configuration list for PBXNativeTarget "DayCalendar" */;
+			buildPhases = (
+				84C68A5E157B4C5F00A94424 /* Sources */,
+				84C68A5F157B4C5F00A94424 /* Frameworks */,
+				84C68A60157B4C5F00A94424 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DayCalendar;
+			productName = DayCalendar;
+			productReference = 84C68A62157B4C5F00A94424 /* DayCalendar.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		84C68A59157B4C5F00A94424 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = DC;
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 84C68A5C157B4C5F00A94424 /* Build configuration list for PBXProject "DayCalendar" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				ru,
+			);
+			mainGroup = 84C68A57157B4C5F00A94424;
+			productRefGroup = 84C68A63157B4C5F00A94424 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				84C68A61157B4C5F00A94424 /* DayCalendar */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		84C68A60157B4C5F00A94424 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84C68A71157B4C5F00A94424 /* Localizable.strings in Resources */,
+				84D707041588F9DB00C541C6 /* theSun.png in Resources */,
+				7CF7824015DBEB9C00134992 /* oldpaper.jpeg in Resources */,
+				7C4AAFA815DE2955001EE20D /* horizontal-line.png in Resources */,
+				840C2D9A15DF708C00B78DF0 /* DayCalendar.png in Resources */,
+				7C4F43D815E4B0E9001ACABF /* amoon_phase_0.png in Resources */,
+				7C4F43D915E4B0E9001ACABF /* amoon_phase_1.png in Resources */,
+				7C4F43DA15E4B0E9001ACABF /* amoon_phase_2.png in Resources */,
+				7C4F43DB15E4B0E9001ACABF /* amoon_phase_3.png in Resources */,
+				7C4F43DC15E4B0E9001ACABF /* amoon_phase_4.png in Resources */,
+				7C4F43DD15E4B0E9001ACABF /* amoon_phase_5.png in Resources */,
+				7C4F43DE15E4B0E9001ACABF /* amoon_phase_6.png in Resources */,
+				7C4F43DF15E4B0E9001ACABF /* amoon_phase_7.png in Resources */,
+				7C406CAF15E670E7000AAEDF /* Settings.bundle in Resources */,
+				7C5B1FD816149341009C9894 /* iPhoneIcon_Small.png in Resources */,
+				7C5B1FDB1614939A009C9894 /* iPhoneIcon_Big.png in Resources */,
+				7C5B1FDD161493D0009C9894 /* iPhoneIcon_Medium.png in Resources */,
+				7C5B1FDF16149458009C9894 /* iPhoneIcon_Big (2).png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		84C68A5E157B4C5F00A94424 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84C68A73157B4C5F00A94424 /* main.m in Sources */,
+				84C68A77157B4C5F00A94424 /* DCAppDelegate.m in Sources */,
+				84C68A7A157B4C5F00A94424 /* DCViewController.m in Sources */,
+				8487778F1583888F00D25477 /* DCDayInfo.m in Sources */,
+				848777971583906E00D25477 /* DCGeoPoint.m in Sources */,
+				7C6C32F315DA2AFC00B9F17E /* DCParseDelegate.m in Sources */,
+				7CF7824315DBEC7300134992 /* DCPopView.m in Sources */,
+				844BA28815DF758800A38E14 /* DCZodiac.m in Sources */,
+				7C3B8BC115E2811900EE6719 /* API.m in Sources */,
+				7C4F43E315E4B2F3001ACABF /* DCMoonPhase.m in Sources */,
+				7C579C7715F8DF8200B2DE3B /* DCMoon.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		84C68A6F157B4C5F00A94424 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84C68A70157B4C5F00A94424 /* en */,
+				7C1DF77515DD18E20055AF65 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		84C68A81157B4C5F00A94424 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Aliaksei Maiorau (ZV7Z47F78M)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5895BD1C-5F5B-4D1D-AFF1-767097ED86B7";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		84C68A82157B4C5F00A94424 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Aliaksei Maiorau (ZV7Z47F78M)";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5895BD1C-5F5B-4D1D-AFF1-767097ED86B7";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		84C68A84157B4C5F00A94424 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DayCalendar/DayCalendar-Prefix.pch";
+				INFOPLIST_FILE = "DayCalendar/DayCalendar-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/DayCalendar/iLib\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		84C68A85157B4C5F00A94424 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DayCalendar/DayCalendar-Prefix.pch";
+				INFOPLIST_FILE = "DayCalendar/DayCalendar-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/DayCalendar/iLib\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		84C68A5C157B4C5F00A94424 /* Build configuration list for PBXProject "DayCalendar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84C68A81157B4C5F00A94424 /* Debug */,
+				84C68A82157B4C5F00A94424 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84C68A83157B4C5F00A94424 /* Build configuration list for PBXNativeTarget "DayCalendar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84C68A84157B4C5F00A94424 /* Debug */,
+				84C68A85157B4C5F00A94424 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 84C68A59157B4C5F00A94424 /* Project object */;
+}

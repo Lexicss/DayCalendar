@@ -1,0 +1,60 @@
+/* Localized versions of Info.plist keys */
+"Monday" = "Понедельник";
+"Tuesday" = "Вторник";
+"Wednesday" = "Среда";
+"Friday" = "Пятница";
+"Saturday" = "Суббота";
+"Sunday" = "Воскресенье";
+"Thursday" = "Четверг";
+
+"January" = "Январь";
+"February" = "Февраль";
+"March" = "Март";
+"April" = "Апрель";
+"May" = "Май";
+"June" = "Июнь";
+"July" = "Июль";
+"August" = "Август";
+"September" = "Сентябрь";
+"October" = "Октябрь";
+"November" = "Ноябрь";
+"December" = "Декабрь";
+
+"Rise:" = "Восход:";
+"Set:" = "Заход:";
+"Duration:" = "Длит.:";
+
+"Error to connect to wikipedia" = "Ошибка при подключении к серверу википедии";
+"wikipedia server" = "http://ru.wikipedia.org/wiki/%@";
+
+"Events" = "События";
+"Births" = "Родились";
+"Deaths" = "Скончались";
+
+"Aries" = "Овен";
+"Taurus" = "Телец";
+"Gemini" = "Близнецы";
+"Cancer" = "Рак";
+"Leo" = "Лев";
+"Virgo" = "Дева";
+"Libra" = "Весы";
+"Scorpio" = "Скорпион";
+"Sagittarius" = "Стрелец";
+"Capricorn" = "Козерог";
+"Aquarius" = "Водолей";
+"Pisces" = "Рыбы";
+"Ophiuchus" = "Змееносец";
+"(but sun in %@)" = "(но солнце в созвездии %@)";
+
+"New Moon" = "Новолуние";
+"Waxing Crescent" = "Растущий месяц";
+"First Quater" = "Первая четверть";
+"Waxing Gibbous" = "Растущая луна";
+"Full Moon" = "Полнолуние";
+"Waning Gibbous" = "Стареющая луна";
+"Last Quater" = "Последняя четверть";
+"Waning Crescent" = "Стареющий месяц";
+"%@ will in %@"= "%@ наступит %@";
+
+"Parser error:" = "Ошибка парсера:";
+"Edit" = "Редакт.";

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>Locations</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Default location</string>
+			<key>Key</key>
+			<string>Current</string>
+			<key>DefaultValue</key>
+			<string>Minsk, Belarus</string>
+			<key>Titles</key>
+			<array>
+				<string>Minsk, Belarus</string>
+				<string>Gomel, Belarus</string>
+				<string>Somewhere</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<string>Minsk, Belarus</string>
+				<string>Gomel, Belarus</string>
+				<string>Somewhere</string>
+			</array>
+			<key>Points</key>
+			<array>
+				<dict>
+					<key>latitude</key>
+					<string>53.9</string>
+					<key>longitude</key>
+					<string>27.56</string>
+				</dict>
+				<dict>
+					<key>latitude</key>
+					<string>52.44</string>
+					<key>longitude</key>
+					<string>30.98</string>
+				</dict>
+				<dict>
+					<key>latitude</key>
+					<string>0</string>
+					<key>longitude</key>
+					<string>0</string>
+				</dict>
+			</array>
+		</dict>
+	</array>
+	<key>StringsTable</key>
+	<string>Root</string>
+</dict>
+</plist>
