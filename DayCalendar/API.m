@@ -8,6 +8,7 @@
 
 #import "API.h"
 #import "DCViewController.h"
+#import "DCMapViewController.h"
 
 #define MAX_VERSION_POINTS 3
 #define __IPHONE_2_0 20000
@@ -21,18 +22,90 @@
 #define __IPHONE_5_0 50000
 #define __IPHONE_6_0 60000
 
+@interface API ()
+
+@property(nonatomic, readonly) UINavigationController *navigationAPI;
+
+@end
+
 
 @implementation API
+@synthesize navigationAPI;
+
+static API *instance;
+static CLLocationCoordinate2D custamCoordinate;
 
 static NSInteger _iosVersion;
 static NSOperation *operation;
 static NSOperationQueue *queue;
 
+#pragma mark - Singelton
+
++ (API *)instance {
+    return instance;
+}
+
++ (UINavigationController *)navigationAPI {
+    return [instance navigationAPI];
+}
+
++ (CLLocationCoordinate2D)custamCoordinate {
+    return custamCoordinate;
+}
+
++ (void)setCustamCoordinate:(CLLocationCoordinate2D)newCoordinate {
+    custamCoordinate = newCoordinate;
+}
+
 + (void)initialize {
+    instance = [API new];
     _iosVersion = [API systemVersionAsAnInteger];
 }
 
+#pragma mark - Constructor
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        DCViewController *mainViewController = [[DCViewController alloc] initWithNibName:nil bundle:nil];
+        if (!navigationAPI) {
+            navigationAPI = [[UINavigationController alloc] initWithRootViewController:mainViewController];
+            UIBarButtonItem *rigthItem = [[UIBarButtonItem alloc] initWithTitle:@"Map"
+                                                                          style:UIBarButtonItemStyleBordered
+                                                                         target:self
+                                                                         action:@selector(mapButtonClicked:)];
+            [navigationAPI.topViewController.navigationItem setRightBarButtonItem:rigthItem];
+            [navigationAPI.topViewController setTitle:@"Calendar"];
+        }
+    }
+    return self;
+}
+
+- (void)mapButtonClicked:(id)sender {
+    if (![[navigationAPI topViewController] isMemberOfClass:[DCViewController class]]) {
+        return;
+    }
+    CLLocationCoordinate2D coordinates = [(DCViewController *)[navigationAPI topViewController] defaultCoordinates];
+    
+    
+    DCMapViewController *mvc = [[DCMapViewController alloc] initWithLocation:coordinates];
+    [navigationAPI pushViewController:mvc animated:YES];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"Change position"
+                                                                  style:UIBarButtonItemStyleDone
+                                                                 target:self
+                                                                 action:@selector(changePositionClicked:)];
+    [mvc.navigationItem setRightBarButtonItem:rightItem];
+}
+
+- (void)changePositionClicked:(id)sender {
+    [navigationAPI popViewControllerAnimated:YES];
+    if ([navigationAPI.topViewController isMemberOfClass:[DCViewController class]]) {
+        [(DCViewController*)[navigationAPI topViewController] refreshCalendarDataWithCustomCoordinate:[API custamCoordinate]] ;
+    }
+}
+
 #pragma mark - Versioning
+
 + (NSInteger)systemVersionAsAnInteger {
     int index = 0;
     NSInteger version = 0;

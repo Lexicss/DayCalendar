@@ -22,6 +22,9 @@
     DCPopView *popView_;
     BOOL conncetionErrorOccured_;
     NSString *lastLocation;
+    
+    CLLocationCoordinate2D customCoordinate_;
+    BOOL useCustomCoordinate_;
 }
 
 @property(nonatomic, strong) UIView *scrollView;
@@ -31,7 +34,9 @@
 @property(nonatomic, strong) NSDateComponents *currentComponents;
 @property(nonatomic, strong) DCPopView *popView;
 
+- (CLLocationCoordinate2D)defaultCoordinates;
 - (void)refreshCalendarData;
+- (void)refreshCalendarDataWithCustomCoordinate:(CLLocationCoordinate2D)aCoordinate;
 - (void)changeMoonInfo:(id)sender;
 
 @end

@@ -168,7 +168,13 @@
     
     //A S T R O N O M I C  C A L C U L A T I O N S
     //The Sun
-    CLLocationCoordinate2D currentLocation = [self defaultCoordinates];
+    CLLocationCoordinate2D currentLocation;
+    if (useCustomCoordinate_) {
+        currentLocation = customCoordinate_;
+        lastLocation = @"CustamLocation";
+    } else {
+        currentLocation = [self defaultCoordinates];//{54.9, 27.33};
+    }
     
     DCGeoPoint *geoPoint = [[DCGeoPoint alloc] init];
     [geoPoint setDateTime:dateComponents];
@@ -699,6 +705,13 @@
        self.currentComponents = [self putDayInfo];
        [self putDayEventsForDateComponents:self.currentComponents];
     }
+}
+
+- (void)refreshCalendarDataWithCustomCoordinate:(CLLocationCoordinate2D)aCoordinate {
+    lastLocation = @"";
+    customCoordinate_ = aCoordinate;
+    useCustomCoordinate_ = YES;
+    [self refreshCalendarData];
 }
 
 - (void)changeMoonInfo:(id)sender {

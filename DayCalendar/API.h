@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
 
 #define SECONDS_IN_HOUR 3600
 #define SECONDS_IN_DAY 86400
@@ -19,7 +20,19 @@ typedef struct RiseSetTimes RiseSetTimes;
 
 @interface API : NSObject
 
+#pragma mark - Singelton
+
++ (API *)instance;
++ (UINavigationController *)navigationAPI;
+
++ (CLLocationCoordinate2D)custamCoordinate;
++ (void)setCustamCoordinate:(CLLocationCoordinate2D)newCoordinate;
+
+#pragma mark - Versioning
+
 + (NSInteger)iosVersion;
+
+#pragma mark - Operation
 
 + (NSOperation *)threadOperation;
 + (void)setThreadOperation:(NSOperation *)aOperation;

@@ -41,6 +41,9 @@
 		84C68A77157B4C5F00A94424 /* DCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C68A76157B4C5F00A94424 /* DCAppDelegate.m */; };
 		84C68A7A157B4C5F00A94424 /* DCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C68A79157B4C5F00A94424 /* DCViewController.m */; };
 		84D707041588F9DB00C541C6 /* theSun.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D707031588F9DB00C541C6 /* theSun.png */; };
+		84DF45231621F6F000B1FCA8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DF45221621F6F000B1FCA8 /* MapKit.framework */; };
+		84DF45271621F8FE00B1FCA8 /* DCMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DF45261621F8FE00B1FCA8 /* DCMapViewController.m */; };
+		84DF452A1621FACB00B1FCA8 /* DCMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DF45291621FACB00B1FCA8 /* DCMapAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +96,11 @@
 		84C68A78157B4C5F00A94424 /* DCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCViewController.h; sourceTree = "<group>"; };
 		84C68A79157B4C5F00A94424 /* DCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCViewController.m; sourceTree = "<group>"; };
 		84D707031588F9DB00C541C6 /* theSun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = theSun.png; sourceTree = "<group>"; };
+		84DF45221621F6F000B1FCA8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		84DF45251621F8FE00B1FCA8 /* DCMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMapViewController.h; sourceTree = "<group>"; };
+		84DF45261621F8FE00B1FCA8 /* DCMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMapViewController.m; sourceTree = "<group>"; };
+		84DF45281621FACB00B1FCA8 /* DCMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMapAnnotation.h; sourceTree = "<group>"; };
+		84DF45291621FACB00B1FCA8 /* DCMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCMapAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84DF45231621F6F000B1FCA8 /* MapKit.framework in Frameworks */,
 				7C1DF76515DCEE7C0055AF65 /* CoreLocation.framework in Frameworks */,
 				84C68A67157B4C5F00A94424 /* UIKit.framework in Frameworks */,
 				84C68A69157B4C5F00A94424 /* Foundation.framework in Frameworks */,
@@ -141,6 +150,7 @@
 		84C68A65157B4C5F00A94424 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84DF45221621F6F000B1FCA8 /* MapKit.framework */,
 				7C1DF76415DCEE7C0055AF65 /* CoreLocation.framework */,
 				84C68A66157B4C5F00A94424 /* UIKit.framework */,
 				84C68A68157B4C5F00A94424 /* Foundation.framework */,
@@ -156,8 +166,6 @@
 				84C68A76157B4C5F00A94424 /* DCAppDelegate.m */,
 				7C3B8BBF15E2811900EE6719 /* API.h */,
 				7C3B8BC015E2811900EE6719 /* API.m */,
-				84C68A78157B4C5F00A94424 /* DCViewController.h */,
-				84C68A79157B4C5F00A94424 /* DCViewController.m */,
 				7CF7824115DBEC7300134992 /* DCPopView.h */,
 				7CF7824215DBEC7300134992 /* DCPopView.m */,
 				7C6C32F115DA2AFC00B9F17E /* DCParseDelegate.h */,
@@ -168,7 +176,10 @@
 				7C579C7615F8DF8200B2DE3B /* DCMoon.m */,
 				848777951583906E00D25477 /* DCGeoPoint.h */,
 				848777961583906E00D25477 /* DCGeoPoint.m */,
+				84DF45281621FACB00B1FCA8 /* DCMapAnnotation.h */,
+				84DF45291621FACB00B1FCA8 /* DCMapAnnotation.m */,
 				7C65F412161C2B010038EB79 /* TODOMacros.h */,
+				84DF452B1621FB4300B1FCA8 /* ViewControllers */,
 				7C4F43E015E4B273001ACABF /* Astronomic Objects */,
 				84D707011588F9B700C541C6 /* Resources */,
 				84C68A6D157B4C5F00A94424 /* Supporting Files */,
@@ -210,6 +221,17 @@
 				84D707031588F9DB00C541C6 /* theSun.png */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		84DF452B1621FB4300B1FCA8 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				84C68A78157B4C5F00A94424 /* DCViewController.h */,
+				84C68A79157B4C5F00A94424 /* DCViewController.m */,
+				84DF45251621F8FE00B1FCA8 /* DCMapViewController.h */,
+				84DF45261621F8FE00B1FCA8 /* DCMapViewController.m */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,6 +326,8 @@
 				7C3B8BC115E2811900EE6719 /* API.m in Sources */,
 				7C4F43E315E4B2F3001ACABF /* DCMoonPhase.m in Sources */,
 				7C579C7715F8DF8200B2DE3B /* DCMoon.m in Sources */,
+				84DF45271621F8FE00B1FCA8 /* DCMapViewController.m in Sources */,
+				84DF452A1621FACB00B1FCA8 /* DCMapAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,10 +401,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DayCalendar/DayCalendar-Prefix.pch";
 				INFOPLIST_FILE = "DayCalendar/DayCalendar-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/DayCalendar/iLib\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -392,10 +413,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DayCalendar/DayCalendar-Prefix.pch";
 				INFOPLIST_FILE = "DayCalendar/DayCalendar-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/DayCalendar/iLib\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
