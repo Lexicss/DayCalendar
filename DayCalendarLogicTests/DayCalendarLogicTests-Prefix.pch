@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'DayCalendarLogicTests' target in the 'DayCalendarLogicTests' project
+//
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif

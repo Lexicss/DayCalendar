@@ -9,9 +9,19 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>DayCalendarLogicTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>7C90A7F21622D9D3003B08F2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>84C68A61157B4C5F00A94424</key>
 		<dict>
 			<key>primary</key>
