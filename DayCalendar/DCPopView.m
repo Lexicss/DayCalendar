@@ -45,12 +45,14 @@ CGPoint lastCenter;
     UIImage *oldPaperImage = [UIImage imageNamed:@"oldpaper.jpeg"];
     CGRect neededRect = CGRectMake(lastCenter.x - oldPaperImage.size.width / 2, lastCenter.y - oldPaperImage.size.height / 2, oldPaperImage.size.width, oldPaperImage.size.height);
     
-    UIEdgeInsets edgeInsets;
-    edgeInsets.top = 70;
-    edgeInsets.bottom = 70;
-    edgeInsets.left = 50;
-    edgeInsets.right = 50;
-    [oldPaperImage resizableImageWithCapInsets:edgeInsets];
+    if ([oldPaperImage respondsToSelector:@selector(resizableImageWithCapInsets:)]) {    
+        UIEdgeInsets edgeInsets;
+        edgeInsets.top = 70;
+        edgeInsets.bottom = 70;
+        edgeInsets.left = 50;
+        edgeInsets.right = 50;
+        [oldPaperImage resizableImageWithCapInsets:edgeInsets];
+    }
     
     self = [super initWithFrame:neededRect];
     if (self) {
