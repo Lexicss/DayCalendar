@@ -34,6 +34,7 @@
 
 static API *instance;
 static CLLocationCoordinate2D custamCoordinate;
+static NSString *custamRegionName;
 
 static NSInteger _iosVersion;
 static NSOperation *operation;
@@ -55,6 +56,16 @@ static NSOperationQueue *queue;
 
 + (void)setCustamCoordinate:(CLLocationCoordinate2D)newCoordinate {
     custamCoordinate = newCoordinate;
+}
+
++ (NSString*)custamRegionName {
+    return [custamRegionName copy];
+}
+
++ (void)setCustamRegionName:(NSString*)newRegionName {
+    if (newRegionName != custamRegionName) {
+      custamRegionName = [newRegionName copy];
+    }
 }
 
 + (void)initialize {
@@ -100,7 +111,7 @@ static NSOperationQueue *queue;
 - (void)changePositionClicked:(id)sender {
     [navigationAPI popViewControllerAnimated:YES];
     if ([navigationAPI.topViewController isMemberOfClass:[DCViewController class]]) {
-        [(DCViewController*)[navigationAPI topViewController] refreshCalendarDataWithCustomCoordinate:[API custamCoordinate]] ;
+        [(DCViewController*)[navigationAPI topViewController] refreshCalendarDataWithCustomCoordinate:[API custamCoordinate] andRegionName:[API custamRegionName]] ;
     }
 }
 

@@ -28,6 +28,9 @@ typedef struct RiseSetTimes RiseSetTimes;
 + (CLLocationCoordinate2D)custamCoordinate;
 + (void)setCustamCoordinate:(CLLocationCoordinate2D)newCoordinate;
 
++ (NSString *)custamRegionName;
++ (void)setCustamRegionName:(NSString *)newRegionName;
+
 #pragma mark - Versioning
 
 + (NSInteger)iosVersion;

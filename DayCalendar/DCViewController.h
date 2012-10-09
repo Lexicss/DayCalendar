@@ -36,7 +36,7 @@
 
 - (CLLocationCoordinate2D)defaultCoordinates;
 - (void)refreshCalendarData;
-- (void)refreshCalendarDataWithCustomCoordinate:(CLLocationCoordinate2D)aCoordinate;
+- (void)refreshCalendarDataWithCustomCoordinate:(CLLocationCoordinate2D)aCoordinate andRegionName:(NSString*)aRegionName;
 - (void)changeMoonInfo:(id)sender;
 
 @end

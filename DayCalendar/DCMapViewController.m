@@ -7,6 +7,7 @@
 //
 
 #import "DCMapViewController.h"
+#import "TODOMacros.h"
 
 @interface DCMapViewController () {
     MKMapView *mapView_;
@@ -14,13 +15,18 @@
     CLLocationCoordinate2D initialCoordinates;
     UILongPressGestureRecognizer *longPressGesture_;
     NSDate *lastPressDate_;
+    DCMapAnnotation *currentAnnonation_;
 }
 @property(nonatomic, strong) UILongPressGestureRecognizer* longPressGesture;
+@property(nonatomic, strong) DCMapAnnotation *currentAnnotation;
+
+- (void)assignNewName:(NSString*)aName;
 
 @end
 
 @implementation DCMapViewController
 @synthesize longPressGesture = longPressGesture_;
+@synthesize currentAnnotation = currentAnnonation_;
 
 - (void)handleLongTap:(id)sender {
     if ([lastPressDate_ timeIntervalSinceNow] >= -2) return;
@@ -30,8 +36,18 @@
     [mapView_ removeAnnotation:[mapView_.annotations lastObject]];
     DCMapAnnotation *oneAnnotation = [[DCMapAnnotation alloc] initWithTitle:@"Selected place"
                                                               andCoordinate:touchCoordinate];
+    [self setCurrentAnnotation:oneAnnotation];
     [mapView_ addAnnotation:oneAnnotation];
+    MKReverseGeocoder *reverseGeoCoder = [[MKReverseGeocoder alloc] initWithCoordinate:touchCoordinate];
+    [reverseGeoCoder setDelegate:self];
+    [reverseGeoCoder start];
+    
     lastPressDate_ = [NSDate date];
+}
+
+- (void)assignNewName:(NSString *)aName {
+    [self.currentAnnotation setTitle:aName];
+    [API setCustamRegionName:aName];
 }
 
 #pragma mark - VC lifecycle
@@ -53,6 +69,8 @@
     return self;
 }
 
+
+TODO("implement GPS searching (CLLocationManager) later")
 - (void)loadView {
     viewFrame_ = [UIScreen mainScreen].bounds;
     mapView_ = [[MKMapView alloc] initWithFrame:viewFrame_];
@@ -86,6 +104,22 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - MKReverseGeocoderDelegate
+
+- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark {
+    NSString *regionName;
+    if (placemark) {
+        regionName = [placemark locality];
+    } else {
+        regionName = @"Unnamed place";
+    }
+    [self assignNewName:regionName];
+}
+
+- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error {
+    [self assignNewName:@"Unnamed place"];
 }
 
 @end

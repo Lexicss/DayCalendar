@@ -300,8 +300,20 @@
     //now jTransit is solar noon;
     double declination = asin(sin(RAD(lambda))*sin(RAD(23.34)));
     
-    double h = acos( (  sin(RAD(-0.83)) - sin(RAD([geoPoint latitude])) * sin(declination) ) /
-                      ( cos(RAD([geoPoint latitude])) * cos(declination) ) );
+    double cosH = (  sin(RAD(-0.83)) - sin(RAD([geoPoint latitude])) * sin(declination) ) /
+    ( cos(RAD([geoPoint latitude])) * cos(declination) );
+    RiseSetTimes times;
+    if (cosH < -1) {
+        times.rise = NEVER_SET;
+        times.set = NEVER_SET;
+        return times;
+    } else if (cosH > 1) {
+        times.rise = NEVER_RISE;
+        times.set = NEVER_RISE;
+        return times;
+    }
+    
+    double h = acos( cosH );
     h = h * 180 / M_PI;
     double j__ = JULIAN_DAY2000 + 0.0009 + (h - [geoPoint longitude]) / 360 + julianDaysInt;
     //ok
@@ -324,7 +336,6 @@
         setMinute = [setComponents minute];
     }
     
-    RiseSetTimes times;
     times.rise =[riseComponents hour] + riseMinute / 60 + [geoPoint.timeZone secondsFromGMT] / SECONDS_IN_HOUR;
     times.set = [setComponents hour] + setMinute / 60 + [geoPoint.timeZone secondsFromGMT] / SECONDS_IN_HOUR;
     

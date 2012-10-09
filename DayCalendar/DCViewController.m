@@ -118,7 +118,7 @@
         [subView removeFromSuperview];
     }
     NSDate *currentDate = [NSDate date];
-    //currentDate = [NSDate dateWithTimeIntervalSinceNow:-86400 * 25100];
+    currentDate = [NSDate dateWithTimeIntervalSinceNow:-86400 * 100];
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *dateComponents = [calendar components:(NSYearCalendarUnit |
                                                              NSMonthCalendarUnit |
@@ -171,7 +171,6 @@
     CLLocationCoordinate2D currentLocation;
     if (useCustomCoordinate_) {
         currentLocation = customCoordinate_;
-        lastLocation = @"CustamLocation";
     } else {
         currentLocation = [self defaultCoordinates];//{54.9, 27.33};
     }
@@ -707,10 +706,11 @@
     }
 }
 
-- (void)refreshCalendarDataWithCustomCoordinate:(CLLocationCoordinate2D)aCoordinate {
+- (void)refreshCalendarDataWithCustomCoordinate:(CLLocationCoordinate2D)aCoordinate andRegionName:(NSString *)aRegionName{
     lastLocation = @"";
     customCoordinate_ = aCoordinate;
     useCustomCoordinate_ = YES;
+    lastLocation = aRegionName;
     [self refreshCalendarData];
 }
 

@@ -11,7 +11,7 @@
 #import "DCMapAnnotation.h"
 #import "API.h"
 
-@interface DCMapViewController : UIViewController <MKMapViewDelegate>
+@interface DCMapViewController : UIViewController <MKMapViewDelegate, MKReverseGeocoderDelegate >
 
 - (id)initWithLocation:(CLLocationCoordinate2D)aLocationCoordinates;
 
