@@ -118,7 +118,7 @@
         [subView removeFromSuperview];
     }
     NSDate *currentDate = [NSDate date];
-    currentDate = [NSDate dateWithTimeIntervalSinceNow:-86400 * 100];
+    //currentDate = [NSDate dateWithTimeIntervalSinceNow:-86400 * 100];
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *dateComponents = [calendar components:(NSYearCalendarUnit |
                                                              NSMonthCalendarUnit |
@@ -347,6 +347,7 @@
     NSString *nextPhaseText = [NSString stringWithFormat:NSLocalizedString(@"%@ will in %@", nil),nextMoonPhase.name, [formatter stringFromDate:nextDate]];
     CGPoint nextPoint = moonPhaseLabel.frame.origin;
     nextPoint.y += moonPhaseLabel.frame.size.height + MAGIC_NUMBER(4);
+    
     nextMoonPhaseLabel = [DCDayInfo astroLabelWithText:nextPhaseText
                                                        withFont:ASTROSUN_FONT_SIGN
                                                   withTextColor:[UIColor darkGrayColor]
