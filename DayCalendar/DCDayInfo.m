@@ -24,8 +24,8 @@
 #define SUN_ANOMALY_OFFSET -3.289
 #define ZENITH_DEGREES 90.5
 
-#define NEVER_RISE -1
-#define NEVER_SET 25
+#define DOWN_ALL_DAY -1
+#define UP_ALL_DAY 25
 
 #define RAD(X) X * M_PI / 180.0
 
@@ -304,12 +304,12 @@
     ( cos(RAD([geoPoint latitude])) * cos(declination) );
     RiseSetTimes times;
     if (cosH < -1) {
-        times.rise = NEVER_SET;
-        times.set = NEVER_SET;
+        times.rise = UP_ALL_DAY;
+        times.set = UP_ALL_DAY;
         return times;
     } else if (cosH > 1) {
-        times.rise = NEVER_RISE;
-        times.set = NEVER_RISE;
+        times.rise = DOWN_ALL_DAY;
+        times.set = DOWN_ALL_DAY;
         return times;
     }
     
@@ -379,10 +379,10 @@
     
     if (isSet) {
         if (cosH < -1)
-            return NEVER_SET;
+            return UP_ALL_DAY;
     } else {
         if (cosH > 1)
-            return NEVER_RISE;
+            return DOWN_ALL_DAY;
     }
     
     double H;
@@ -432,11 +432,11 @@
 }
 
 + (NSInteger)neverRise {
-    return NEVER_RISE;
+    return DOWN_ALL_DAY;
 }
 
 + (NSInteger)neverSet {
-    return NEVER_SET;
+    return UP_ALL_DAY;
 }
 
 //- (void)logStrings:(id)firstObject, ... {

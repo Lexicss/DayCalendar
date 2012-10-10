@@ -58,3 +58,14 @@
 
 "Parser error:" = "Parser error:";
 "Edit" = "Edit";
+
+"Up" = "Up";
+"Down" = "Down";
+"No rise" = "No rise";
+"No set" = "No set";
+
+"Selected place" = "Selected place";
+"Unnamed place" = "Unnamed place";
+"Map" = "Map";
+"Change location" = "Change location";
+"Calendar" = "Calendar";

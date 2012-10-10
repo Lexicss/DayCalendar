@@ -118,7 +118,7 @@
         [subView removeFromSuperview];
     }
     NSDate *currentDate = [NSDate date];
-    //currentDate = [NSDate dateWithTimeIntervalSinceNow:-86400 * 100];
+    //currentDate = [NSDate dateWithTimeIntervalSinceNow:-86400 * 280];
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *dateComponents = [calendar components:(NSYearCalendarUnit |
                                                              NSMonthCalendarUnit |
@@ -169,11 +169,12 @@
     //A S T R O N O M I C  C A L C U L A T I O N S
     //The Sun
     CLLocationCoordinate2D currentLocation;
-    if (useCustomCoordinate_) {
-        currentLocation = customCoordinate_;
-    } else {
-        currentLocation = [self defaultCoordinates];//{54.9, 27.33};
-    }
+//    if (useCustomCoordinate_) {
+//        currentLocation = customCoordinate_;
+//    } else {
+//        currentLocation = [self defaultCoordinates];//{54.9, 27.33};
+//    }
+    currentLocation = [self defaultCoordinates];
     
     DCGeoPoint *geoPoint = [[DCGeoPoint alloc] init];
     [geoPoint setDateTime:dateComponents];
@@ -184,12 +185,23 @@
     RiseSetTimes sunTimes = [DCDayInfo calculateSunWithGeoPoint2:geoPoint];
     RiseSetTimes moonTimes = [DCMoon calculateMoonWithGeoPoint:geoPoint];
     
-    NSUInteger riseHour = floor(sunTimes.rise);
-    NSUInteger setHour = floor(sunTimes.set);
+    NSUInteger polarDayOrNight = 0;
+    if (sunTimes.rise == [DCDayInfo neverSet]) {
+        polarDayOrNight = 1; // polar day
+    } else if (sunTimes.rise == [DCDayInfo neverRise]) {
+        polarDayOrNight = 2; // polar night
+    };
     
-    CGFloat durationTime = sunTimes.set - sunTimes.rise;
-    NSUInteger durationHour = floor(durationTime);
-    NSString *timeInfo;
+    NSUInteger riseHour, setHour, durationHour;
+    CGFloat durationTime;
+    if (!polarDayOrNight) {
+        riseHour = floor(sunTimes.rise);
+        setHour = floor(sunTimes.set);
+        
+        durationTime = sunTimes.set - sunTimes.rise;
+        durationHour = floor(durationTime);
+    }
+    NSString *timeInfoRise, *timeInfoSet;
     
     UILabel *sunRiseSign = [DCDayInfo astroLabelWithText:NSLocalizedString(@"Rise:", nil)
                                                 withFont:ASTROSUN_FONT_SIGN
@@ -197,13 +209,24 @@
                                                withPoint:ASTROSUNR_SIGN_POINT];
     [self.scrollView addSubview:sunRiseSign];
     
-    if (riseHour == [DCDayInfo neverRise]) {
-        timeInfo = @"-";
-    } else {
-        timeInfo = [NSString stringWithFormat:@"%d:%@",riseHour,[DCDayInfo minutesFromCGFloat:sunTimes.rise]];
+    switch (polarDayOrNight) {
+        case 1:
+            timeInfoRise = NSLocalizedString(@"Up", nil);
+            timeInfoSet = NSLocalizedString(@"No set", nil);
+            break;
+            
+        case 2:
+            timeInfoRise = NSLocalizedString(@"No rise", nil);
+            timeInfoSet = NSLocalizedString(@"Down", nil);
+            break;
+            
+        default:
+            timeInfoRise = [NSString stringWithFormat:@"%d:%@",riseHour,[DCDayInfo minutesFromCGFloat:sunTimes.rise]];
+            timeInfoSet = [NSString stringWithFormat:@"%d:%@", setHour, [DCDayInfo minutesFromCGFloat:sunTimes.set]];
+            break;
     }
     
-    UILabel *sunRiseInfo = [DCDayInfo astroLabelWithText:timeInfo
+    UILabel *sunRiseInfo = [DCDayInfo astroLabelWithText:timeInfoRise
                                                 withFont:ASTROSUN_FONT_INFO
                                            withTextColor:[self colorForWeekDayNumber:[dateComponents weekday] withBlackLayer:RISE_BLACKLAYER]
                                                withPoint:ASTROSUNR_INFO_POINT];
@@ -215,13 +238,7 @@
                                               withPoint:ASTROSUNS_SIGN_POINT];
     [self.scrollView addSubview:sunSetSign];
     
-    if (setHour == [DCDayInfo neverSet]) {
-        timeInfo = @"-";
-    } else {
-        timeInfo = [NSString stringWithFormat:@"%d:%@", setHour, [DCDayInfo minutesFromCGFloat:sunTimes.set]];
-    }
-    
-    UILabel *sunSetInfo = [DCDayInfo astroLabelWithText:timeInfo
+    UILabel *sunSetInfo = [DCDayInfo astroLabelWithText:timeInfoSet
                                                withFont:ASTROSUN_FONT_INFO
                                           withTextColor:[self colorForWeekDayNumber:[dateComponents weekday] withBlackLayer:SET_BLACKLAYER]
                                               withPoint:ASTROSUNS_INFO_POINT];
@@ -233,7 +250,14 @@
                                                    withPoint:ASTROSUND_SIGN_POINT];
     [self.scrollView addSubview:sunDurationSign];
     
-    UILabel *sunDurationInfo = [DCDayInfo astroLabelWithText:[NSString stringWithFormat:@"%d:%@", durationHour, [DCDayInfo minutesFromCGFloat:durationTime]]
+    NSString *timeInfoDur;
+    if (polarDayOrNight) {
+        timeInfoDur = @"-";
+    } else {
+        timeInfoDur = [NSString stringWithFormat:@"%d:%@", durationHour, [DCDayInfo minutesFromCGFloat:durationTime]];
+    }
+    
+    UILabel *sunDurationInfo = [DCDayInfo astroLabelWithText:timeInfoDur
                                                     withFont:ASTROSUN_FONT_INFO
                                                withTextColor:[self colorForWeekDayNumber:[dateComponents weekday] withBlackLayer:DURATION_BLACKLAYER]
                                                    withPoint:ASTROSUND_INFO_POINT];
@@ -365,7 +389,7 @@
     riseHour = floor(moonTimes.rise);
     setHour = floor(moonTimes.set);
     
-    timeInfo = [NSString stringWithFormat:@"%d:%@",riseHour,[DCDayInfo minutesFromCGFloat:moonTimes.rise]];
+    timeInfoRise = [NSString stringWithFormat:@"%d:%@",riseHour,[DCDayInfo minutesFromCGFloat:moonTimes.rise]];
     CGPoint labelPoint = ASTROSUNS_SIGN_POINT;
     labelPoint.x = [UIScreen mainScreen].bounds.size.width - MOON_SIGN_OFFSET_X;
     moonRiseSignLabel = [DCDayInfo astroLabelWithText:NSLocalizedString(@"Rise:", nil)
@@ -374,20 +398,20 @@
                                                 withPoint:labelPoint];
     labelPoint = ASTROSUNS_INFO_POINT;
     labelPoint.x = [UIScreen mainScreen].bounds.size.width - MOON_INFO_OFFSET_X;
-    moonRiseInfoLabel = [DCDayInfo astroLabelWithText:timeInfo
+    moonRiseInfoLabel = [DCDayInfo astroLabelWithText:timeInfoRise
                                                  withFont:ASTROSUN_FONT_INFO
                                             withTextColor:[UIColor lightGrayColor]
                                                 withPoint:labelPoint];
     labelPoint = ASTROSUND_SIGN_POINT;
     labelPoint.x = [UIScreen mainScreen].bounds.size.width - MOON_SIGN_OFFSET_X;
-    timeInfo = [NSString stringWithFormat:@"%d:%@",setHour,[DCDayInfo minutesFromCGFloat:moonTimes.set]];
+    timeInfoSet = [NSString stringWithFormat:@"%d:%@",setHour,[DCDayInfo minutesFromCGFloat:moonTimes.set]];
     moonSetSignLabel = [DCDayInfo astroLabelWithText:NSLocalizedString(@"Set:", nil)
                                                 withFont:ASTROSUN_FONT_SIGN
                                            withTextColor:[UIColor blackColor]
                                                withPoint:labelPoint];
     labelPoint = ASTROSUND_INFO_POINT;
     labelPoint.x = [UIScreen mainScreen].bounds.size.width - MOON_INFO_OFFSET_X;
-    moonSetInfoLabel = [DCDayInfo astroLabelWithText:timeInfo
+    moonSetInfoLabel = [DCDayInfo astroLabelWithText:timeInfoSet
                                                 withFont:ASTROSUN_FONT_INFO
                                            withTextColor:[UIColor grayColor]
                                                withPoint:labelPoint];
@@ -631,6 +655,8 @@
 }
 
 - (CLLocationCoordinate2D)defaultCoordinates {
+    if (useCustomCoordinate_)
+        return customCoordinate_;
     
     CLLocationCoordinate2D zeroLocation = (CLLocationCoordinate2D){0,0};
     // get the plist location from the settings bundle

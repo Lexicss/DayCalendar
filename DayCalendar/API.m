@@ -81,12 +81,12 @@ static NSOperationQueue *queue;
         DCViewController *mainViewController = [[DCViewController alloc] initWithNibName:nil bundle:nil];
         if (!navigationAPI) {
             navigationAPI = [[UINavigationController alloc] initWithRootViewController:mainViewController];
-            UIBarButtonItem *rigthItem = [[UIBarButtonItem alloc] initWithTitle:@"Map"
+            UIBarButtonItem *rigthItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Map", nil)
                                                                           style:UIBarButtonItemStyleBordered
                                                                          target:self
                                                                          action:@selector(mapButtonClicked:)];
             [navigationAPI.topViewController.navigationItem setRightBarButtonItem:rigthItem];
-            [navigationAPI.topViewController setTitle:@"Calendar"];
+            [navigationAPI.topViewController setTitle:NSLocalizedString(@"Calendar", nil)];
         }
     }
     return self;
@@ -101,7 +101,7 @@ static NSOperationQueue *queue;
     
     DCMapViewController *mvc = [[DCMapViewController alloc] initWithLocation:coordinates];
     [navigationAPI pushViewController:mvc animated:YES];
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"Change position"
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Change location", nil)
                                                                   style:UIBarButtonItemStyleDone
                                                                  target:self
                                                                  action:@selector(changePositionClicked:)];

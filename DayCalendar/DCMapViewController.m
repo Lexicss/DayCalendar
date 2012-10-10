@@ -34,13 +34,26 @@
     CGPoint touchPoint = [self.longPressGesture locationInView:self.view];
     CLLocationCoordinate2D touchCoordinate = [mapView_ convertPoint:touchPoint toCoordinateFromView:self.view];
     [mapView_ removeAnnotation:[mapView_.annotations lastObject]];
-    DCMapAnnotation *oneAnnotation = [[DCMapAnnotation alloc] initWithTitle:@"Selected place"
+    DCMapAnnotation *oneAnnotation = [[DCMapAnnotation alloc] initWithTitle:NSLocalizedString(@"Selected place", nil)
                                                               andCoordinate:touchCoordinate];
     [self setCurrentAnnotation:oneAnnotation];
     [mapView_ addAnnotation:oneAnnotation];
-    MKReverseGeocoder *reverseGeoCoder = [[MKReverseGeocoder alloc] initWithCoordinate:touchCoordinate];
-    [reverseGeoCoder setDelegate:self];
-    [reverseGeoCoder start];
+    
+    // modern style from ios 5.0
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:touchCoordinate.latitude
+                                                      longitude:touchCoordinate.longitude];
+    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (error || !placemarks) {
+            [self assignNewName:NSLocalizedString(@"Unnamed place", nil)];
+        } else {
+            MKPlacemark *placemark = placemarks[0];
+            [self assignNewName:[placemark locality]];
+        }
+    }];
+    
+    //------
+    
     
     lastPressDate_ = [NSDate date];
 }
@@ -90,7 +103,7 @@ TODO("implement GPS searching (CLLocationManager) later")
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	DCMapAnnotation *oneAnnotation = [[DCMapAnnotation alloc] initWithTitle:@"Selected place"
+	DCMapAnnotation *oneAnnotation = [[DCMapAnnotation alloc] initWithTitle:NSLocalizedString(@"Selected place", nil)
                                                               andCoordinate:initialCoordinates];
     [mapView_ addAnnotation:oneAnnotation];
 }
@@ -106,20 +119,5 @@ TODO("implement GPS searching (CLLocationManager) later")
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - MKReverseGeocoderDelegate
-
-- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark {
-    NSString *regionName;
-    if (placemark) {
-        regionName = [placemark locality];
-    } else {
-        regionName = @"Unnamed place";
-    }
-    [self assignNewName:regionName];
-}
-
-- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error {
-    [self assignNewName:@"Unnamed place"];
-}
 
 @end
