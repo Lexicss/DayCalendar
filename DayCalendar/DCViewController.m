@@ -198,7 +198,11 @@
         riseHour = floor(sunTimes.rise);
         setHour = floor(sunTimes.set);
         
-        durationTime = sunTimes.set - sunTimes.rise;
+        if (setHour >= riseHour) {
+          durationTime = sunTimes.set - sunTimes.rise;
+        } else {
+            durationTime = MAGIC_NUMBER(24) - (sunTimes.rise - sunTimes.set);
+        }
         durationHour = floor(durationTime);
     }
     NSString *timeInfoRise, *timeInfoSet;

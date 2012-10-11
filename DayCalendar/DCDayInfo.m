@@ -339,6 +339,11 @@
     times.rise =[riseComponents hour] + riseMinute / 60 + [geoPoint.timeZone secondsFromGMT] / SECONDS_IN_HOUR;
     times.set = [setComponents hour] + setMinute / 60 + [geoPoint.timeZone secondsFromGMT] / SECONDS_IN_HOUR;
     
+    if (times.rise >= HOURS_IN_DAY)
+        times.rise -= HOURS_IN_DAY;
+    if (times.set >= HOURS_IN_DAY)
+        times.set -= HOURS_IN_DAY;
+    
     return times;
 }
 
