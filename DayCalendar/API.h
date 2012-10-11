@@ -11,6 +11,7 @@
 
 #define SECONDS_IN_HOUR 3600
 #define SECONDS_IN_DAY 86400
+#define HOURS_IN_DAY 24
 
 struct RiseSetTimes {
     CGFloat rise;

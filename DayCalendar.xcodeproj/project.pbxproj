@@ -579,6 +579,7 @@
 				7C90A8031622D9D3003B08F2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		84C68A5C157B4C5F00A94424 /* Build configuration list for PBXProject "DayCalendar" */ = {
 			isa = XCConfigurationList;

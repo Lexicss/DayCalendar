@@ -85,6 +85,7 @@
 - (CLLocationCoordinate2D)defaultCoordinates;
 - (BOOL)locationChanged;
 - (void)handleMoonTouch:(id)sender;
+- (NSArray*)myPreferenceSpecifiers;
 @end
 
 @implementation DCViewController
@@ -201,7 +202,7 @@
         if (setHour >= riseHour) {
           durationTime = sunTimes.set - sunTimes.rise;
         } else {
-            durationTime = MAGIC_NUMBER(24) - (sunTimes.rise - sunTimes.set);
+            durationTime = HOURS_IN_DAY - (sunTimes.rise - sunTimes.set);
         }
         durationHour = floor(durationTime);
     }
@@ -374,7 +375,7 @@
     NSDate *nextDate = [gregorianCalendar dateFromComponents:nextComponents];
     NSString *nextPhaseText = [NSString stringWithFormat:NSLocalizedString(@"%@ will in %@", nil),nextMoonPhase.name, [formatter stringFromDate:nextDate]];
     CGPoint nextPoint = moonPhaseLabel.frame.origin;
-    nextPoint.y += moonPhaseLabel.frame.size.height + MAGIC_NUMBER(4);
+    nextPoint.y += moonPhaseLabel.frame.size.height + 4;
     
     nextMoonPhaseLabel = [DCDayInfo astroLabelWithText:nextPhaseText
                                                        withFont:ASTROSUN_FONT_SIGN
@@ -663,59 +664,42 @@
         return customCoordinate_;
     
     CLLocationCoordinate2D zeroLocation = (CLLocationCoordinate2D){0,0};
-    // get the plist location from the settings bundle
-    NSString *settingsPath = [[[NSBundle mainBundle] bundlePath]
-                              stringByAppendingPathComponent:
-                              @"Settings.bundle"];
-    if (!settingsPath)
-        return zeroLocation;
-    NSString *plistPath =
-    [settingsPath stringByAppendingPathComponent:@"Root.plist"];
-    if (!plistPath)
-        return zeroLocation;
-    
-    // get the preference specifiers array which contains the settings
-    NSDictionary *settingsDictionary =
-    [NSDictionary dictionaryWithContentsOfFile:plistPath];
-    if (!settingsDictionary)
+
+    NSArray *preferencesArray = [self myPreferenceSpecifiers];
+    if (!preferencesArray)
         return zeroLocation;
 
-    NSArray *preferencesArray =
-    [settingsDictionary objectForKey:@"PreferenceSpecifiers"];
-    
     // use the shared defaults object
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     // for each preference item, set its default if there is no value set
     for (NSDictionary *item in preferencesArray) {
         // get the item key, if there is no key then we can skip it
         NSString *key = [item objectForKey:@"Key"];
         if (key) {
-            id value = [defaults objectForKey:key];
-            id defaultValue = [item objectForKey:@"DefaultValue"];
-            if (defaultValue && !value) {
-                [defaults setObject:defaultValue forKey:key];
+            id userDefaultsValue = [userDefaults objectForKey:key];//Minsk,Belarus
+            id bundleValue = [item objectForKey:@"DefaultValue"];
+            if (bundleValue && !userDefaultsValue) {
+                [userDefaults setObject:bundleValue forKey:key];
             }
         }
     }   
-    [defaults synchronize];
+    BOOL synchronizeSucceeded = [userDefaults synchronize];
+    NSLog(@"synchronizeSucceded %@",synchronizeSucceeded?@"Ok":@"Failed");
     
-    
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSString *location = [prefs stringForKey:@"Current"];
-    if (!location)
+    NSString *locationName = [userDefaults stringForKey:@"Current"];
+    if (!locationName)
         return zeroLocation;
-    lastLocation = [NSString stringWithString:location];
+    lastLocation = [NSString stringWithString:locationName];
     
-    NSString *settingsBundle = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"Settings.bundle"];
-    NSString *rootPlist = [settingsBundle stringByAppendingPathComponent:@"Root.plist"];
-    NSDictionary *asettingsDictionary = [NSDictionary dictionaryWithContentsOfFile:rootPlist];
-    
-    NSArray *apreferencesArray = [asettingsDictionary objectForKey:@"PreferenceSpecifiers"];
+    NSArray *apreferencesArray = [self myPreferenceSpecifiers];
+    if (!apreferencesArray)
+        return zeroLocation;
+
     NSDictionary *item1 = [apreferencesArray objectAtIndex:1];
     NSArray *cityArray = [NSArray arrayWithArray:[item1 valueForKey:@"Titles"]];
     NSArray *coordinatesArray = [NSArray arrayWithArray:[item1 valueForKey:@"Points"]];
-    NSUInteger index = [cityArray indexOfObject:location];
+    NSUInteger index = [cityArray indexOfObject:locationName];
     
     NSDictionary *defaultCoordinates = [coordinatesArray objectAtIndex:index];
     CGFloat lat = [[defaultCoordinates valueForKey:@"latitude"] floatValue];
@@ -726,6 +710,25 @@
 - (void)handleMoonTouch:(id)sender {
     [[API threadOperation] cancel];
     [self changeMoonInfo:sender];
+}
+
+- (NSArray*)myPreferenceSpecifiers {
+    NSString *settingsPath = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"Settings.bundle"];
+    if (!settingsPath)
+        return nil;
+    NSString *plistPath =
+    [settingsPath stringByAppendingPathComponent:@"Root.plist"];
+    if (!plistPath)
+        return nil;
+    
+    // get the preference specifiers array which contains the settings
+    NSDictionary *settingsDictionary =
+    [NSDictionary dictionaryWithContentsOfFile:plistPath];
+    if (!settingsDictionary)
+        return nil;
+    NSArray *preferencesArray =
+    [settingsDictionary objectForKey:@"PreferenceSpecifiers"];
+    return preferencesArray;
 }
 
 #pragma mark - External methods
