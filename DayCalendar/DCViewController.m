@@ -521,7 +521,9 @@
      self.deathsArray = [events objectAtIndex:2];
      dispatch_sync(dispatch_get_main_queue(), ^(void){
          CGRect mainRect = [[UIScreen mainScreen] bounds];
-         UITableView *eventsTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, EVENTS_OFFSET, mainRect.size.width, mainRect.size.height - EVENTS_OFFSET - [UIApplication sharedApplication].statusBarFrame.size.height) style:UITableViewStylePlain];
+         UITableView *eventsTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, EVENTS_OFFSET, mainRect.size.width, mainRect.size.height -
+             EVENTS_OFFSET - [UIApplication sharedApplication].statusBarFrame.size.height -
+             self.navigationController.navigationBar.frame.size.height) style:UITableViewStylePlain];
          [eventsTableView setDataSource:self];
          [eventsTableView setDelegate:self];
          [eventsTableView setAllowsSelection:YES];

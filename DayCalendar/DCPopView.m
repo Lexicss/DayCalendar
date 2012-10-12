@@ -76,8 +76,7 @@ CGPoint lastCenter;
         [textView setFrame:textViewFrame];
         [self setFrame:selfFrame];
         [imageView setFrame:self.bounds];
-        
-        
+
         [self addSubview:textView];
         [self setAlpha:0];
         [textView setUserInteractionEnabled:NO];

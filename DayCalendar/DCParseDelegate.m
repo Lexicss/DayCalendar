@@ -130,7 +130,6 @@
             default:
                 break;
         }
-        
     }
     
     if ( (eventsArray && scanStatus == kScanStatusEvents && [elementName isEqualToString:@"li"]) ||
