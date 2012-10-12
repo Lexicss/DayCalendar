@@ -70,6 +70,8 @@
 #define DEFAULT_CELL_HEIGHT 44
 #define NARROW_CELL_HEIGHT 25
 
+//#define MYDEBUG 100
+
 @interface DCViewController () {
     UILabel *nextMoonPhaseLabel;
     UILabel *moonRiseSignLabel;
@@ -119,7 +121,11 @@
         [subView removeFromSuperview];
     }
     NSDate *currentDate = [NSDate date];
-    //currentDate = [NSDate dateWithTimeIntervalSinceNow:-86400 * 280];
+#ifdef MYDEBUG
+    currentDate = [NSDate dateWithTimeIntervalSinceNow:-86400 * MYDEBUG];
+#endif
+    
+
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *dateComponents = [calendar components:(NSYearCalendarUnit |
                                                              NSMonthCalendarUnit |
@@ -137,7 +143,7 @@
         dayFont = DAY_FONT;
         yearFont = YEAR_FONT;
     }
-    
+
     // Basic items
     UILabel *dayLabel = [DCDayInfo calendarLabelWithComponent:[dateComponents day]
                                                      withFont:dayFont
@@ -704,6 +710,7 @@
     NSDictionary *defaultCoordinates = [coordinatesArray objectAtIndex:index];
     CGFloat lat = [[defaultCoordinates valueForKey:@"latitude"] floatValue];
     CGFloat lon = [[defaultCoordinates valueForKey:@"longitude"] floatValue];
+
     return (CLLocationCoordinate2D){lat,lon};
 }
 
