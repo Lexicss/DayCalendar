@@ -691,9 +691,7 @@
                 [userDefaults setObject:bundleValue forKey:key];
             }
         }
-    }   
-    BOOL synchronizeSucceeded = [userDefaults synchronize];
-    NSLog(@"synchronizeSucceded %@",synchronizeSucceeded?@"Ok":@"Failed");
+    }
     
     NSString *locationName = [userDefaults stringForKey:@"Current"];
     if (!locationName)

@@ -90,7 +90,6 @@ TODO("implement GPS searching (CLLocationManager) later")
     MKCoordinateSpan mapSpan = MKCoordinateSpanMake(0.4, 0.4);
     MKCoordinateRegion mapRegion = MKCoordinateRegionMake(initialCoordinates,mapSpan);
     [mapView_ setRegion:mapRegion];
-    [mapView_ setDelegate:self];
     
     UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self
                                                                                                    action:@selector(handleLongTap:)];
@@ -108,9 +107,14 @@ TODO("implement GPS searching (CLLocationManager) later")
     [mapView_ addAnnotation:oneAnnotation];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [mapView_ setDelegate:self];
+}
 - (void)viewWillDisappear:(BOOL)animated {
     DCMapAnnotation *lastAnnotation = [mapView_.annotations lastObject];
     [API setCustamCoordinate:[lastAnnotation coordinate]];
+    [mapView_ setDelegate:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning
