@@ -28,6 +28,8 @@
 
 @end
 
+//help
+//http://anton.bukarev.org/tryuki-i-sekrety/zapusk-svoego-prilozheniya-na-iphone-bez-sertifikata-ot-apple/
 
 @implementation API
 @synthesize navigationAPI;
@@ -129,8 +131,9 @@ static NSOperationQueue *queue;
             break;
         }
         NSInteger multipler = powf(100, MAX_VERSION_POINTS - 1 - index);
-        version += [number intValue]*multipler; 
+        version += [number intValue]*multipler;
         index++;
+        
     }
     return version;
 }
