@@ -176,11 +176,6 @@
     //A S T R O N O M I C  C A L C U L A T I O N S
     //The Sun
     CLLocationCoordinate2D currentLocation;
-//    if (useCustomCoordinate_) {
-//        currentLocation = customCoordinate_;
-//    } else {
-//        currentLocation = [self defaultCoordinates];//{54.9, 27.33};
-//    }
     currentLocation = [self defaultCoordinates];
     
     DCGeoPoint *geoPoint = [[DCGeoPoint alloc] init];
@@ -261,7 +256,7 @@
                                                    withPoint:ASTROSUND_SIGN_POINT];
     [self.scrollView addSubview:sunDurationSign];
     
-    NSString *timeInfoDur;
+    NSString *timeInfoDur;  
     if (polarDayOrNight) {
         timeInfoDur = @"-";
     } else {
@@ -809,6 +804,7 @@
     [self.scrollView setBackgroundColor:[UIColor whiteColor]];
     [self setView:self.scrollView];
 
+    
     [self refreshCalendarData];
 }
 

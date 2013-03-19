@@ -117,8 +117,7 @@ TODO("implement GPS searching (CLLocationManager) later")
     
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }

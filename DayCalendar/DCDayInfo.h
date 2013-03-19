@@ -18,6 +18,7 @@
 + (NSDateComponents *)gFromJ:(double)JD;
 
 + (NSInteger)julianDayFromComponents:(NSDateComponents *)components;
++ (double) encodeJDfromComponents:(NSDateComponents *)components;
 
 + (NSString *)stringFromWeekday:(NSInteger)weekday;
 + (NSString *)stringFromMonth:(NSInteger)month;

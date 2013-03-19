@@ -210,7 +210,7 @@ static long double Set_az = 0.0;
 
 + (RiseSetTimes) calculateMoonWithGeoPoint:(DCGeoPoint *)geoPoint {
     double zone = -[geoPoint.timeZone secondsFromGMT] / SECONDS_IN_HOUR;//-3.0;
-    double jdlp = [DCDayInfo julianDayFromComponents:[geoPoint dateTime]];//[DCDayInfo jFromG:components];
+    double jdlp = [DCDayInfo julianDayFromComponents:[geoPoint dateTime]];
     double jd = jdlp - 2451545;
     
     NSMutableArray *mp = [[NSMutableArray alloc] initWithCapacity:3];

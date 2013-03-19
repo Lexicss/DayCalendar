@@ -54,7 +54,13 @@
 
 #pragma mark - App Lifecycle
 
+- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    NSLog(@"Will FinishLaunching with options");
+    return YES;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    NSLog(@"Did FinishLaunching with options");
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = [API navigationAPI];
     [self.window makeKeyAndVisible];
@@ -64,26 +70,28 @@
     refreshingAllowed_ = NO;
 
     [API setThreadQueue:self.globalQueue];
-    [self enqueWaitingOperation];
+    
     
     return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
+     NSLog(@"Will Resign Active");
     refreshingAllowed_ = YES;
+    [[API threadOperation] cancel];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-
+    NSLog(@"app is now running in the background and may be suspended at any time");
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    NSLog(@"app is moving out of the background and back into the foreground, but that it is not yet active");
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    NSLog(@"Did Become Active");
+    [self enqueWaitingOperation];
     if (refreshingAllowed_ && [[[API navigationAPI] topViewController] isMemberOfClass:[DCViewController class]]) {
         [(DCViewController *)[API navigationAPI].topViewController refreshCalendarData];
         refreshingAllowed_ = NO;

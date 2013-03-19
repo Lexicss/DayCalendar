@@ -10,11 +10,25 @@
 
 #define NORMAL_DAYCOLOR [UIColor blackColor]
 #define HOLIDAY_DAYCOLOR [UIColor redColor]
-#define SATURDAY_DAYCOLOR [UIColor colorWithRed:128.0 / 255 green:0 blue:1.0 alpha:1.0]
+#define SATURDAY_DAYCOLOR [UIColor darkGrayColor]//[UIColor colorWithRed:128.0 / 255 green:0 blue:1.0 alpha:1.0]
 
 #define DAYS_IN_YEAR 365.25
 #define MONTHES_IN_YEAR 12
 #define MOON_SINODIC_PERIOD 29.530588853;
+#define DAYS_IN_YEAR_AVERAGE 365.2425
+#define MINUTES_IN_HOUR 60
+#define SECONDS_IN_MINUTE 60
+#define NOON (int)(HOURS_IN_DAY / 2)
+#define START_CALC_YEAR -4800
+#define DAYS_IN_MONTH_AVERAGE 30.6001
+#define DAYS_B4800_TILL_JD0 32045
+
+#define JD_FOR_1582 2299161.0
+#define JD_FOR_400 1867216.25
+
+#define JULIAN_START_MONTH 3
+#define MINUTES_IN_DAY HOURS_IN_DAY * MINUTES_IN_HOUR
+#define SECONDS_IN_DAY MINUTES_IN_DAY * SECONDS_IN_MINUTE
 
 #define MID_MORNING_HOUR 6
 #define MID_EVENING_HOUR 18
@@ -113,6 +127,23 @@
     return julianDay;
 }
 
++ (double)encodeJDfromComponents:(NSDateComponents *)components {
+    double minutesPerDay = (double)MINUTES_IN_DAY;
+    double time = (([components hour] - (double)NOON )/ (double)HOURS_IN_DAY) + ([components minute] / minutesPerDay); //+ ([components second] / (double)SECONDS_IN_DAY);
+
+    int prevYear = (MONTHES_IN_YEAR - [components month] + JULIAN_START_MONTH - 1) / MONTHES_IN_YEAR;
+    
+    int totalYears = [components year] - START_CALC_YEAR - prevYear;
+    int julianMonthNumber = [components month] + MONTHES_IN_YEAR * prevYear - JULIAN_START_MONTH;
+    
+    int jdn = [components day] + (153*julianMonthNumber + 2) / 5 + (int)DAYS_IN_YEAR * totalYears + [self lipYearsCountTillYear:totalYears] - DAYS_B4800_TILL_JD0;
+    
+    return jdn + time;
+}
+
++ (int)lipYearsCountTillYear:(int)year {
+    return year / 4 - year / 100 + year / 400;
+}
 
 + (NSString *)stringFromWeekday:(NSInteger)weekday {
     switch (weekday) {
@@ -412,11 +443,14 @@
 
 + (CGFloat)calculateMoonPhaseForComponents:(NSDateComponents *)components {
     double AG;
-    int julianDay;
-    double IP;
+    //int julianDay;
+    double IP, julianDay0;
 
-    julianDay = [self julianDayFromComponents:components];
-    IP = (julianDay - 2451550) / MOON_SINODIC_PERIOD;
+    
+    
+    //julianDay = [self julianDayFromComponents:components];
+    julianDay0 = [self encodeJDfromComponents:components];
+    IP = (julianDay0 - 2451550) / MOON_SINODIC_PERIOD;
     IP -= floor(IP);
     
     AG = IP * MOON_SINODIC_PERIOD;
