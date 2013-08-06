@@ -8,6 +8,8 @@
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
+	<key>SignerIdentity</key>
+	<string>Apple iPhone OS Application Signing</string>
 	<key>CFBundleGetInfoString</key>
 	<string></string>
 	<key>CFBundleIconFile</key>
@@ -56,12 +58,22 @@
 	<string></string>
 	<key>UIApplicationExitsOnSuspend</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string></string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string></string>
 	</array>
 	<key>UIInterfaceOrientation</key>
 	<string>UIInterfaceOrientationPortrait</string>
+	<key>UILaunchImageFile</key>
+	<string></string>
+	<key>UILaunchImageFile~ipad</key>
+	<string></string>
+	<key>UILaunchImageFile~iphone</key>
+	<string></string>
 	<key>UIPrerenderedIcon</key>
 	<true/>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -92,5 +104,11 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>UIUpgradeOtherBundleIdentifier</key>
+	<string></string>
+	<key>UIViewEdgeAntialiasing</key>
+	<false/>
+	<key>UIViewGroupOpacity</key>
+	<false/>
 </dict>
 </plist>
