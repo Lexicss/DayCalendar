@@ -811,6 +811,8 @@ NSInteger *const kPolarNight = 2;
 
     
     [self refreshCalendarData];
+    
+    // Some changes  I will do here for next stash
 }
 
 - (void)viewDidLoad
