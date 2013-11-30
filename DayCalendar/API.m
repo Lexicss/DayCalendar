@@ -143,10 +143,6 @@ static NSOperationQueue *queue;
 }
 
 + (BOOL)isIphone5 {
-//    BOOL isIphone = ([[[UIDevice currentDevice] model] isEqualToString:@"iPhone"]);
-//    BOOL isTall = ([[UIScreen mainScreen] bounds].size.height >= 568.0f);
-//    
-//    return isIphone && isTall;
     if([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone)
     {
         NSLog(@"%@", NSStringFromCGRect([[UIScreen mainScreen] bounds]));
