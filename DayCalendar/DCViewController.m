@@ -825,6 +825,8 @@ NSInteger *const kPolarNight = 2;
     
     BOOL is5 = [API isIphone5];
     NSLog(@"isIphone5 %@",(is5?@"YES":@"NO"));
+    
+    // Hey, lalaley 
 }
 
 - (void)viewDidUnload
