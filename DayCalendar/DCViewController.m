@@ -98,6 +98,9 @@
 @synthesize birthsArray;
 @synthesize deathsArray;
 
+NSInteger *const kPolarDay = 1;
+NSInteger *const kPolarNight = 2;
+
 #pragma mark - Show UI
 
 - (UIColor*)colorForWeekDayNumber:(NSUInteger)weekday withBlackLayer :(CGFloat)divider {
@@ -188,14 +191,16 @@
     RiseSetTimes moonTimes = [DCMoon calculateMoonWithGeoPoint:geoPoint];
     
     NSUInteger polarDayOrNight = 0;
+    
     if (sunTimes.rise == [DCDayInfo neverSet]) {
-        polarDayOrNight = 1; // polar day
+        polarDayOrNight = kPolarDay; // polar day
     } else if (sunTimes.rise == [DCDayInfo neverRise]) {
-        polarDayOrNight = 2; // polar night
+        polarDayOrNight = kPolarNight; // polar night
     };
     
     NSUInteger riseHour, setHour, durationHour;
     CGFloat durationTime;
+    
     if (!polarDayOrNight) {
         riseHour = floor(sunTimes.rise);
         setHour = floor(sunTimes.set);
@@ -305,6 +310,7 @@
     [self.scrollView addSubview:zodiacTextLabel];
     
     DCZodiac *realZodiac = [DCZodiac sunZodiacFromDateComponents:dateComponents];
+    
     if (![realZodiac.sign isEqualToString:[ancientZodiac sign]]) {
         UILabel *realZodiacTextLabel = [DCDayInfo astroLabelWithText:
                                         [NSString stringWithFormat:NSLocalizedString(@"(but sun in %@)", nil),[realZodiac name]]
@@ -322,7 +328,6 @@
         [realZodiacTextLabel setNumberOfLines:2];
         [self.scrollView addSubview:realZodiacTextLabel];
     }
-    
     
     //The Moon
     CGFloat moonDaysLapsed = [DCDayInfo calculateMoonPhaseForComponents:dateComponents];
@@ -811,6 +816,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
+        [self setEdgesForExtendedLayout:UIRectEdgeNone]; // iOS 7 specific
+    }
+    
+    BOOL is5 = [API isIphone5];
+    NSLog(@"isIphone5 %@",(is5?@"YES":@"NO"));
 }
 
 - (void)viewDidUnload

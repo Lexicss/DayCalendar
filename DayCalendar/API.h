@@ -36,6 +36,8 @@ typedef struct RiseSetTimes RiseSetTimes;
 
 + (NSInteger)iosVersion;
 
++ (BOOL)isIphone5;
+
 #pragma mark - Operation
 
 + (NSOperation *)threadOperation;
