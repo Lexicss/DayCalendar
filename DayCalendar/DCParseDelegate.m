@@ -24,6 +24,7 @@
 }
 - (id)initWithData:(NSData *)data {
     self = [super init];
+    
     if (self) {
         xmlParser_ = [[NSXMLParser alloc] initWithData:data];
         [xmlParser_ setDelegate:self];
@@ -89,7 +90,6 @@
                     eventsArray = [NSMutableArray array];
                 }
                 
-                
                 // time to finish parsing
                 if ([[attributeDict valueForKey:@"class"] isEqualToString:@"mw-headline"] &&
                     ([self isId:birthsAtr inAttributes:attributeDict] ||
@@ -115,6 +115,7 @@
                 break;
                 
             case kScanStatusDearths: {
+                
                 if ([[attributeDict valueForKey:@"class"] isEqualToString:@"mw-headline"] &&
                     ([self isId:primAtr inAttributes:attributeDict] ||
                      [self isId:primAtr2 inAttributes:attributeDict])) {
@@ -140,17 +141,21 @@
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
-    if (scanStatus == kScanStatusEvents && eventsArray && eventString && [elementName isEqualToString:@"li"]) {
+    BOOL inited = eventsArray && eventString && [elementName isEqualToString:@"li"];
+    
+    if (scanStatus == kScanStatusEvents && inited) {
         [eventsArray addObject:eventString];
         eventString = nil;
         return;
     }
-    if (scanStatus == kScanStatusBirths && birthsArray && eventString && [elementName isEqualToString:@"li"]) {
+    
+    if (scanStatus == kScanStatusBirths && inited) {
         [birthsArray addObject:eventString];
         eventString = nil;
         return;
     }
-    if (scanStatus == kScanStatusDearths && dearthsArray && eventString && [elementName isEqualToString:@"li"]) {
+    
+    if (scanStatus == kScanStatusDearths && inited) {
         [dearthsArray addObject:eventString];
         eventString = nil;
         return;
@@ -158,11 +163,12 @@
     
 }
 
-
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
-    if ((scanStatus == kScanStatusEvents && eventsArray && eventString) ||
-        (scanStatus == kScanStatusBirths && birthsArray && eventString) ||
-        (scanStatus == kScanStatusDearths && dearthsArray && eventString)) {
+    BOOL inited = eventsArray && eventString;
+    
+    if (((scanStatus == kScanStatusEvents) ||
+        (scanStatus == kScanStatusBirths) ||
+        (scanStatus == kScanStatusDearths)) && inited) {
         [eventString appendString:string];
     }
 }
@@ -170,6 +176,7 @@
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
     NSLog(@"ERROR: %@", [parseError localizedDescription]);
     NSLog(@"line: %d, column: %d",[parser lineNumber], [parser columnNumber]);
+    
     if ([parseError code] != MANUALABORT_ERROR_CODE &&
         [parseError code] != 512 ) {
         __block NSString *errorDescription = [parseError localizedDescription];

@@ -822,11 +822,6 @@ NSInteger *const kPolarNight = 2;
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) {
         [self setEdgesForExtendedLayout:UIRectEdgeNone]; // iOS 7 specific
     }
-    
-    BOOL is5 = [API isIphone5];
-    NSLog(@"isIphone5 %@",(is5?@"YES":@"NO"));
-    
-    // Hey, lalaley 
 }
 
 - (void)viewDidUnload

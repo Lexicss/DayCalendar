@@ -11,7 +11,6 @@
 @interface DCPopView : UIView
 
 - (id)initWithText:(NSString*)text;
-
 - (void)animateWithAppearence:(BOOL)appear;
 
 @end

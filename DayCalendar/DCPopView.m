@@ -55,6 +55,7 @@ CGPoint lastCenter;
     }
     
     self = [super initWithFrame:neededRect];
+    
     if (self) {
         UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(BORDER, BORDER, oldPaperImage.size.width - BORDER, oldPaperImage.size.height - BORDER)];
         [textView setBackgroundColor:[UIColor clearColor]];
@@ -97,6 +98,7 @@ CGPoint lastCenter;
 
 - (void)animateWithAppearence:(BOOL)appear {
     if (appear) {
+        
         if (self.alpha != 0)
             return;
         
@@ -104,8 +106,10 @@ CGPoint lastCenter;
             [self setAlpha:ALPHA];
         }];
     } else {
+        
         if (self.alpha == 0)
             return;
+        
         [UIView animateWithDuration:DURATION animations:^(void){
             [self setAlpha:0];
         } completion:^(BOOL finished){
@@ -132,12 +136,16 @@ CGPoint lastCenter;
     CGPoint newCenterPoint = CGPointMake(currentCenter.x + deltaX, currentCenter.y + deltaY);
     CGRect mainScreen = [[UIScreen mainScreen] bounds];
     mainScreen.size.height -= [UIApplication sharedApplication].statusBarFrame.size.height;
+    
     if (newCenterPoint.x < self.frame.size.width / 2)
         newCenterPoint.x = self.frame.size.width / 2;
+    
     if (newCenterPoint.y < self.frame.size.height / 2)
         newCenterPoint.y = self.frame.size.height / 2;
+    
     if (newCenterPoint.x > mainScreen.size.width - self.frame.size.width / 2)
         newCenterPoint.x = mainScreen.size.width - self.frame.size.width / 2;
+    
     if (newCenterPoint.y > mainScreen.size.height - self.frame.size.height / 2)
         newCenterPoint.y = mainScreen.size.height - self.frame.size.height / 2;
     

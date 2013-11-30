@@ -79,6 +79,7 @@ static NSOperationQueue *queue;
 
 - (id)init {
     self = [super init];
+    
     if (self) {
         DCViewController *mainViewController = [[DCViewController alloc] initWithNibName:nil bundle:nil];
         if (!navigationAPI) {
@@ -140,41 +141,6 @@ static NSOperationQueue *queue;
 
 + (NSInteger)iosVersion {
     return _iosVersion;
-}
-
-+ (BOOL)isIphone5 {
-//    BOOL isIphone = ([[[UIDevice currentDevice] model] isEqualToString:@"iPhone"]);
-//    BOOL isTall = ([[UIScreen mainScreen] bounds].size.height >= 568.0f);
-//    
-//    return isIphone && isTall;
-    if([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone)
-    {
-        NSLog(@"%@", NSStringFromCGRect([[UIScreen mainScreen] bounds]));
-        if ([[UIScreen mainScreen] bounds].size.height == 568)
-        {
-            return YES;
-            
-        }
-        else
-        {
-            //iphone 3.5 inch screen
-        }
-    }
-    
-    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
-    {
-        CGSize result = [[UIScreen mainScreen] bounds].size;
-        if(result.height == 480)
-        {
-            // iPhone Classic
-        }
-        if(result.height == 568)
-        {
-            // iPhone 5
-        }
-    }
-    
-    return NO;
 }
 
 #pragma mark - Operation;

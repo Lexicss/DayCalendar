@@ -43,6 +43,7 @@
             [self enqueWaitingOperation];
             return;
         }
+        
         sleep(SLEEP_DURATION);
     }
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -72,7 +73,6 @@
 
     [API setThreadQueue:self.globalQueue];
     
-    
     return YES;
 }
 
@@ -93,6 +93,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     NSLog(@"Did Become Active");
     [self enqueWaitingOperation];
+    
     if (refreshingAllowed_ && [[[API navigationAPI] topViewController] isMemberOfClass:[DCViewController class]]) {
         [(DCViewController *)[API navigationAPI].topViewController refreshCalendarData];
         refreshingAllowed_ = NO;

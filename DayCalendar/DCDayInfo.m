@@ -129,7 +129,7 @@
 
 + (double)encodeJDfromComponents:(NSDateComponents *)components {
     double minutesPerDay = (double)MINUTES_IN_DAY;
-    double time = (([components hour] - (double)NOON )/ (double)HOURS_IN_DAY) + ([components minute] / minutesPerDay); //+ ([components second] / (double)SECONDS_IN_DAY);
+    double time = (([components hour] - (double)NOON )/ (double)HOURS_IN_DAY) + ([components minute] / minutesPerDay);
 
     int prevYear = (MONTHES_IN_YEAR - [components month] + JULIAN_START_MONTH - 1) / MONTHES_IN_YEAR;
     
@@ -166,7 +166,6 @@
             return @"???";
     }
 }
-
 
 + (NSString *)stringFromMonth:(NSInteger)month {
     switch (month) {
@@ -247,14 +246,15 @@
     UILabel *dateLabel = [[UILabel alloc] initWithFrame:dateRect];
     [dateLabel setFont:font];
     [dateLabel setText:dateString];
+    
     if (needChangeColor && (weekday == 1)) {  // is Sunday 
         holidayDependsColor = HOLIDAY_DAYCOLOR;
     } else if (needChangeColor && (weekday == 7)) { // is Saturday
         holidayDependsColor = SATURDAY_DAYCOLOR;
-    }
-    else {
+    } else {
         holidayDependsColor = NORMAL_DAYCOLOR;
     }
+    
     [dateLabel setTextColor:holidayDependsColor];
     return dateLabel;
 }
@@ -273,14 +273,15 @@
     UILabel *dateLabel = [[UILabel alloc] initWithFrame:dateRect];
     [dateLabel setFont:font];
     [dateLabel setText:dateString];
+    
     if (needChangeColor && (weekday == 1)) {  // is Sunday 
         holidayDependsColor = HOLIDAY_DAYCOLOR;
     } else if (needChangeColor && (weekday == 7)) { // is Saturday
         holidayDependsColor = SATURDAY_DAYCOLOR;
-    }
-    else {
+    }  else {
         holidayDependsColor = NORMAL_DAYCOLOR;
     }
+    
     [dateLabel setTextColor:holidayDependsColor];
     return dateLabel;
 }
@@ -309,8 +310,8 @@
     double M = 0;
     double lambda = 0;
     NSInteger iteration = 0;
+    
     do {
-        
         M = (357.5291 + 0.98560028 * (j_ - JULIAN_DAY2000));
         double Mdev = M - floor(M);
         NSInteger temp = (NSInteger)trunc(M) % 360;
@@ -327,12 +328,13 @@
         iteration++;
     
     } while (iteration < 1);
+    
     //now jTransit is solar noon;
     double declination = asin(sin(RAD(lambda))*sin(RAD(23.34)));
-    
     double cosH = (  sin(RAD(-0.83)) - sin(RAD([geoPoint latitude])) * sin(declination) ) /
     ( cos(RAD([geoPoint latitude])) * cos(declination) );
     RiseSetTimes times;
+    
     if (cosH < -1) {
         times.rise = UP_ALL_DAY;
         times.set = UP_ALL_DAY;
@@ -355,11 +357,13 @@
     NSDateComponents *riseComponents = [DCDayInfo gFromJ:jRise];
     NSDateComponents *setComponents = [DCDayInfo gFromJ:jSet];
     double riseMinute, setMinute;
+    
     if ([riseComponents second] > 29) {
         riseMinute = [riseComponents minute] + 1;
     } else {
         riseMinute = [riseComponents minute];
     }
+    
     if ([setComponents second] > 29) {
         setMinute = [setComponents minute] + 1;
     } else {
@@ -371,6 +375,7 @@
     
     if (times.rise >= HOURS_IN_DAY)
         times.rise -= HOURS_IN_DAY;
+    
     if (times.set >= HOURS_IN_DAY)
         times.set -= HOURS_IN_DAY;
     
@@ -385,16 +390,19 @@
                                                                    inUnit:NSYearCalendarUnit
                                                                   forDate:date];
     double startHour;
+    
     if (isSet) {
         startHour = MID_EVENING_HOUR;
     } else {
         startHour = MID_MORNING_HOUR;
     }
+    
     double lngHour = [geoPoint longitude] / DEGREES_IN_ZONE;
     double t = dayOfYear + (startHour - lngHour) / HOURS_IN_DAY;
     double M = (SUN_ANOMALY * t) + SUN_ANOMALY_OFFSET; 
 
     double L = M + (1.916 * sin(M * M_PI / 180.0)) + (0.020 * sin(2 * M * M_PI / 180.0)) + 282.634;
+    
     if (L > 360.0) {
         L -= 360.0; 
     }
@@ -421,12 +429,12 @@
     }
     
     double H;
+    
     if (isSet) {
         H = acos(cosH) * 180 / M_PI;
     } else {
         H = 360 - acos(cosH) * 180 / M_PI;
     }
-    
 
     H /= DEGREES_IN_ZONE;
     double T = H + RA - (0.06571*t) - 6.622;
@@ -446,8 +454,6 @@
     //int julianDay;
     double IP, julianDay0;
 
-    
-    
     //julianDay = [self julianDayFromComponents:components];
     julianDay0 = [self encodeJDfromComponents:components];
     IP = (julianDay0 - 2451550) / MOON_SINODIC_PERIOD;
@@ -476,19 +482,5 @@
 + (NSInteger)neverSet {
     return UP_ALL_DAY;
 }
-
-//- (void)logStrings:(id)firstObject, ... {
-//    id eachObject;
-//    va_list argumentList;
-//    if (firstObject) {
-//        NSLog(@"%@", firstObject);
-//        va_start(argumentList, firstObject);
-//        
-//        while ((eachObject = va_arg(argumentList, id))) {
-//            NSLog(@"%@", eachObject);
-//        }
-//        va_end(argumentList);
-//    }
-//}
 
 @end
