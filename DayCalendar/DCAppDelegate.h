@@ -9,14 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "API.h"
 
-@class DCViewController;
+@class DCMainViewController;
 
 @interface DCAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
-@property (strong, nonatomic) DCViewController *viewController;
-
+@property (strong, nonatomic) DCMainViewController *viewController;
 @property (strong, nonatomic) NSOperationQueue *globalQueue;
 
 @end

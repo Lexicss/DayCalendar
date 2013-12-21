@@ -44,7 +44,7 @@
 		84C68A71157B4C5F00A94424 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84C68A6F157B4C5F00A94424 /* Localizable.strings */; };
 		84C68A73157B4C5F00A94424 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C68A72157B4C5F00A94424 /* main.m */; };
 		84C68A77157B4C5F00A94424 /* DCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C68A76157B4C5F00A94424 /* DCAppDelegate.m */; };
-		84C68A7A157B4C5F00A94424 /* DCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C68A79157B4C5F00A94424 /* DCViewController.m */; };
+		84C68A7A157B4C5F00A94424 /* DCMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C68A79157B4C5F00A94424 /* DCMainViewController.m */; };
 		84D707041588F9DB00C541C6 /* theSun.png in Resources */ = {isa = PBXBuildFile; fileRef = 84D707031588F9DB00C541C6 /* theSun.png */; };
 		84DF45231621F6F000B1FCA8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84DF45221621F6F000B1FCA8 /* MapKit.framework */; };
 		84DF45271621F8FE00B1FCA8 /* DCMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DF45261621F8FE00B1FCA8 /* DCMapViewController.m */; };
@@ -105,8 +105,8 @@
 		84C68A74157B4C5F00A94424 /* DayCalendar-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DayCalendar-Prefix.pch"; sourceTree = "<group>"; };
 		84C68A75157B4C5F00A94424 /* DCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCAppDelegate.h; sourceTree = "<group>"; };
 		84C68A76157B4C5F00A94424 /* DCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCAppDelegate.m; sourceTree = "<group>"; };
-		84C68A78157B4C5F00A94424 /* DCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCViewController.h; sourceTree = "<group>"; };
-		84C68A79157B4C5F00A94424 /* DCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCViewController.m; sourceTree = "<group>"; };
+		84C68A78157B4C5F00A94424 /* DCMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCMainViewController.h; sourceTree = "<group>"; };
+		84C68A79157B4C5F00A94424 /* DCMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCMainViewController.m; sourceTree = "<group>"; };
 		84D707031588F9DB00C541C6 /* theSun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = theSun.png; sourceTree = "<group>"; };
 		84DF45221621F6F000B1FCA8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		84DF45251621F8FE00B1FCA8 /* DCMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCMapViewController.h; sourceTree = "<group>"; };
@@ -271,8 +271,8 @@
 		84DF452B1621FB4300B1FCA8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				84C68A78157B4C5F00A94424 /* DCViewController.h */,
-				84C68A79157B4C5F00A94424 /* DCViewController.m */,
+				84C68A78157B4C5F00A94424 /* DCMainViewController.h */,
+				84C68A79157B4C5F00A94424 /* DCMainViewController.m */,
 				84DF45251621F8FE00B1FCA8 /* DCMapViewController.h */,
 				84DF45261621F8FE00B1FCA8 /* DCMapViewController.m */,
 			);
@@ -413,7 +413,7 @@
 			files = (
 				84C68A73157B4C5F00A94424 /* main.m in Sources */,
 				84C68A77157B4C5F00A94424 /* DCAppDelegate.m in Sources */,
-				84C68A7A157B4C5F00A94424 /* DCViewController.m in Sources */,
+				84C68A7A157B4C5F00A94424 /* DCMainViewController.m in Sources */,
 				8487778F1583888F00D25477 /* DCDayInfo.m in Sources */,
 				848777971583906E00D25477 /* DCGeoPoint.m in Sources */,
 				7C6C32F315DA2AFC00B9F17E /* DCParseDelegate.m in Sources */,

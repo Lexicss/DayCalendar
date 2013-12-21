@@ -64,7 +64,9 @@ CGPoint lastCenter;
         [textView setText:text];
         [textView setEditable:NO];
         
-        CGSize textViewSize = [text sizeWithFont:TEXT_VIEV_FONT constrainedToSize:textView.frame.size lineBreakMode:UILineBreakModeHeadTruncation];
+        CGSize textViewSize = [text sizeWithFont:TEXT_VIEV_FONT
+                               constrainedToSize:textView.frame.size
+                                   lineBreakMode:NSLineBreakByTruncatingHead];
         
         UIImageView *imageView = [[UIImageView alloc] initWithImage:oldPaperImage];
         [self addSubview:imageView];

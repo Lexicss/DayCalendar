@@ -14,8 +14,8 @@
 @interface DCDayInfo : NSObject
 
 + (double)sign:(double)value;
-+ (double)jFromG:(NSDateComponents *)components;
-+ (NSDateComponents *)gFromJ:(double)JD;
++ (double)julianFromGregorian:(NSDateComponents *)components;
++ (NSDateComponents *)gregorianFromJulian:(double)JD;
 
 + (NSInteger)julianDayFromComponents:(NSDateComponents *)components;
 + (double) encodeJDfromComponents:(NSDateComponents *)components;

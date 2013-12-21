@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DCViewController.h"
+#import "DCMainViewController.h"
 
 typedef enum {
     kScanStatusNone,

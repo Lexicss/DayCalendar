@@ -60,7 +60,7 @@
     } else return 0;
 }
 
-+ (double)jFromG:(NSDateComponents *)components {
++ (double)julianFromGregorian:(NSDateComponents *)components {
     double gregYear = (double)[components year];
     double gregMonth = (double)[components month];
     double gregDay = (double)[components day];
@@ -73,7 +73,7 @@
     return JD;
 }
 
-+ (NSDateComponents *)gFromJ:(double)JD {
++ (NSDateComponents *)gregorianFromJulian:(double)JD {
     double J = JD + 0.5;
     double j = J + 32044;
     int g = j / 146097;
@@ -301,7 +301,7 @@
 
 + (RiseSetTimes)calculateSunWithGeoPoint2:(DCGeoPoint *)geoPoint{
 
-    double julianDate = [self jFromG:[geoPoint dateTime]];
+    double julianDate = [self julianFromGregorian:[geoPoint dateTime]];
     double julianDaysFloat = julianDate - JULIAN_DAY2000 - 0.0009 + ([geoPoint longitude] / 360);
     NSInteger julianDaysInt = round(julianDaysFloat);
     
@@ -354,8 +354,8 @@
     //ok
     double jRise = j_ - (jSet - j_);
     
-    NSDateComponents *riseComponents = [DCDayInfo gFromJ:jRise];
-    NSDateComponents *setComponents = [DCDayInfo gFromJ:jSet];
+    NSDateComponents *riseComponents = [DCDayInfo gregorianFromJulian:jRise];
+    NSDateComponents *setComponents = [DCDayInfo gregorianFromJulian:jSet];
     double riseMinute, setMinute;
     
     if ([riseComponents second] > 29) {

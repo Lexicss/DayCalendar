@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "DCViewController.h"
+#import "DCMainViewController.h"
 #import "DCDayInfo.h"
 #import "DCGeoPoint.h"
 #import "DCParseDelegate.h"
@@ -72,7 +72,7 @@
 
 //#define MYDEBUG 100
 
-@interface DCViewController () {
+@interface DCMainViewController () {
     UILabel *nextMoonPhaseLabel;
     UILabel *moonRiseSignLabel;
     UILabel *moonRiseInfoLabel;
@@ -90,7 +90,7 @@
 - (NSArray*)myPreferenceSpecifiers;
 @end
 
-@implementation DCViewController
+@implementation DCMainViewController
 @synthesize scrollView = scrollView_;
 @synthesize eventsArray = eventsArray_;
 @synthesize currentComponents = currentComponents_;

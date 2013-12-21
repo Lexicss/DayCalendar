@@ -8,7 +8,7 @@
 
 #import "DCAppDelegate.h"
 
-#import "DCViewController.h"
+#import "DCMainViewController.h"
 
 // SLEEP_DURATION x SLEEP_TIMES = number of seconds to wait for repeat
 #define SLEEP_DURATION 3
@@ -47,8 +47,8 @@
         sleep(SLEEP_DURATION);
     }
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        if ([[[API navigationAPI] topViewController] isMemberOfClass:[DCViewController class]]) {
-          [(DCViewController*)[API navigationAPI].topViewController changeMoonInfo:sender];
+        if ([[[API navigationAPI] topViewController] isMemberOfClass:[DCMainViewController class]]) {
+          [(DCMainViewController*)[API navigationAPI].topViewController changeMoonInfo:sender];
         }
     }];
     [self enqueWaitingOperation];
@@ -94,8 +94,8 @@
     NSLog(@"Did Become Active");
     [self enqueWaitingOperation];
     
-    if (refreshingAllowed_ && [[[API navigationAPI] topViewController] isMemberOfClass:[DCViewController class]]) {
-        [(DCViewController *)[API navigationAPI].topViewController refreshCalendarData];
+    if (refreshingAllowed_ && [[[API navigationAPI] topViewController] isMemberOfClass:[DCMainViewController class]]) {
+        [(DCMainViewController *)[API navigationAPI].topViewController refreshCalendarData];
         refreshingAllowed_ = NO;
     }
 }

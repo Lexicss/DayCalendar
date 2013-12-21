@@ -16,7 +16,7 @@
 
 @end
 
-@interface DCViewController : UIViewController<DCViewControllerDelegate, UITableViewDataSource, UITableViewDelegate> {
+@interface DCMainViewController : UIViewController<DCViewControllerDelegate, UITableViewDataSource, UITableViewDelegate> {
     UIView *scrollView_;
     UIActivityIndicatorView *activity;
     DCPopView *popView_;

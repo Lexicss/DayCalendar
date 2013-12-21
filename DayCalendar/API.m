@@ -7,7 +7,7 @@
 //
 
 #import "API.h"
-#import "DCViewController.h"
+#import "DCMainViewController.h"
 #import "DCMapViewController.h"
 
 #define MAX_VERSION_POINTS 3
@@ -81,7 +81,8 @@ static NSOperationQueue *queue;
     self = [super init];
     
     if (self) {
-        DCViewController *mainViewController = [[DCViewController alloc] initWithNibName:nil bundle:nil];
+        DCMainViewController *mainViewController = [[DCMainViewController alloc] initWithNibName:nil
+                                                                                          bundle:nil];
         if (!navigationAPI) {
             navigationAPI = [[UINavigationController alloc] initWithRootViewController:mainViewController];
             UIBarButtonItem *rigthItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Map", nil)
@@ -96,10 +97,11 @@ static NSOperationQueue *queue;
 }
 
 - (void)mapButtonClicked:(id)sender {
-    if (![[navigationAPI topViewController] isMemberOfClass:[DCViewController class]]) {
+    if (![[navigationAPI topViewController] isMemberOfClass:[DCMainViewController class]]) {
         return;
     }
-    CLLocationCoordinate2D coordinates = [(DCViewController *)[navigationAPI topViewController] defaultCoordinates];
+    
+    CLLocationCoordinate2D coordinates = [(DCMainViewController *)[navigationAPI topViewController] defaultCoordinates];
     
     
     DCMapViewController *mvc = [[DCMapViewController alloc] initWithLocation:coordinates];
@@ -113,8 +115,9 @@ static NSOperationQueue *queue;
 
 - (void)changePositionClicked:(id)sender {
     [navigationAPI popViewControllerAnimated:YES];
-    if ([navigationAPI.topViewController isMemberOfClass:[DCViewController class]]) {
-        [(DCViewController*)[navigationAPI topViewController] refreshCalendarDataWithCustomCoordinate:[API custamCoordinate] andRegionName:[API custamRegionName]] ;
+    
+    if ([navigationAPI.topViewController isMemberOfClass:[DCMainViewController class]]) {
+        [(DCMainViewController*)[navigationAPI topViewController] refreshCalendarDataWithCustomCoordinate:[API custamCoordinate] andRegionName:[API custamRegionName]] ;
     }
 }
 

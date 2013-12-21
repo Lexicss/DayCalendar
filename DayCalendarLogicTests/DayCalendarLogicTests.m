@@ -8,7 +8,7 @@
 
 #import "DayCalendarLogicTests.h"
 #import "DCAppDelegate.h"
-#import "DCViewController.h"
+#import "DCMainViewController.h"
 
 @interface DayCalendarLogicTests () {
     DCAppDelegate *appDelegate_;
